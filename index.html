@@ -1,669 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UUD KEPOLISIAN GTA SAN ANDREAS ROLEPLAY</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #E9ECEF;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HANSKUY SERVICE</title>
 
-        .header {
-            background-color: #ea939c;
-            color: rgb(255, 255, 255);
-            padding: 20px 0;
-            font-size: 24px;
-            font-weight: bold;
-        }
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-        .sub-header {
-            background-color: #FFFFFF;
-            color: black;
-            padding: 10px 0;
-            font-size: 20px;
-        }
+  <style>
+    body {
+      background-color: #2a0066;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-        .form-container {
-            margin: 20px auto;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #ea939c;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
 
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+    .header img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
 
-        .info-box {
-            background-color: #fbeaec;
-            color: black;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 18px;
-            font-weight: bold;
-        }
+    .header h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin: 0;
+    }
 
-        .submit-button {
-            background-color: #FFFFFF;
-            color: #002366;
-            padding: 10px 20px;
-            border: #000000;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-        }
+    .header h1 span { color: #ff3030; }
 
-        table {
-            margin: 20px auto;
-            border-collapse: collapse;
-            width: 90%;
-        }
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
 
-        table, th, td {
-            border: 1px solid black;
-        }
+    .icon-card {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 130px;
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
+    .icon-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35) inset;
+    }
 
-        th {
-            background-color: #fbeaec;
-        }
+    .icon-circle i {
+      font-size: 46px;
+      line-height: 1;
+    }
 
-        .section-title {
-            background-color: #ea939c;
-            color: black;
-            padding: 10px;
-            margin: 20px 0;
-            font-size: 20px;
-            font-weight: bold;
-        }
+    /* Warna ikon spesifik */
+    .icon-tiktok i { color: #111; }
+    .icon-instagram i { color: #e1306c; }
+    .icon-donate i { color: #ffb86b; }
+    .icon-ambulance i { color: #ff4444; }
 
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-        }
+    .icon-card a { text-decoration: none; }
 
-        .footer a {
-            color: blue;
-            text-decoration: none;
-        }
+    .icon-card button {
+      background-color: #76ff03;
+      color: #000;
+      border: none;
+      padding: 10px 22px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap; /* supaya teks tetap satu baris */
+      transition: transform .18s ease, background-color .18s ease;
+    }
 
-        .result-box {
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ff9799;
-            border: 1px solid #ccc;
-            font-size: 18px;
-            display: none;
-            max-width: 600px;
-            text-align: left;
-        }
-    </style>
+    .icon-card button:hover {
+      transform: scale(1.05);
+      background-color: #00e676;
+    }
+
+    .description {
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(255,255,255,0.07);
+      padding: 25px;
+      border-radius: 15px;
+    }
+
+    @media (max-width: 480px){
+      .icon-card { width: 95px; gap: 10px; }
+      .icon-circle { width: 84px; height: 84px; }
+      .icon-circle i { font-size: 34px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">Kitab Undang Undang Kepolisian Arivena Theater</div>
-    <div class="sub-header">
-        <span>&#129332; HANSKUY16 &#129332;</span>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="https://i.ibb.co.com/qL6bJpss/Helm-2.jpg" alt="Logo Helm Hanskuy">
+    <h1><span>HANSKUY</span> SERVICE</h1>
+  </div>
+
+  <!-- ICONS -->
+  <div class="icons">
+
+    <!-- TikTok -->
+    <div class="icon-card">
+      <div class="icon-circle icon-tiktok">
+        <i class="fa-brands fa-tiktok"></i>
+      </div>
+      <a href="https://www.tiktok.com/@hanskuy.16" target="_blank" rel="noopener">
+        <button>CLICK HERE</button>
+      </a>
     </div>
 
-    <div class="form-container">
-        <form id="mainForm">
-            <label for="name">Nama Suspect :</label><br>
-            <input type="text" id="name" name="name" placeholder="Masukkan nama...">
-
-            <div class="info-box">
-                Disclaimer
-            </div>
-
-            <div class="info-box">
-                Seluruh Pelanggaran Yang Ada Di Website Ini Adalah Contoh Dan Tidak Ada Hubungannya Dengan Yang Nyata
-            </div>
-
-            <button type="button" class="submit-button" onclick="displayResult()">Submit</button>
-        </form>
+    <!-- Instagram -->
+    <div class="icon-card">
+      <div class="icon-circle icon-instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+      <a href="https://www.instagram.com/hanief.16/" target="_blank" rel="noopener">
+        <button>CLICK HERE</button>
+      </a>
     </div>
 
-    <div class="result-box" id="resultBox"></div>
-
-    <div class="section-title">TINDAK PIDANA TERHADAP NYAWA</div>
-    <table id="offenseTable1">
-        <tr>
-            <th>PASAL(AYAT)</th>
-            <th>CEKLIS</th>
-            <th>PELANGGARAN</th>
-            <th>DENDA($)</th>
-            <th>MASA TAHANAN(BULAN)</th>
-        </tr>
-        <tr>
-            <td>7(1)</td>
-            <td><input type="checkbox" value="7.2"></td>
-            <td>Terorisme</td>
-            <td>65000</td>
-            <td>99999</td>
-        </tr>
-        <tr>
-            <td>7(2)</td>
-            <td><input type="checkbox" value="7.2"></td>
-            <td>Percobaan Terorisme</td>
-            <td>49500</td>
-            <td>90</td>
-        </tr>
-        <tr>
-            <td>8(1)</td>
-            <td><input type="checkbox" value="8.1"></td>
-            <td>Pembunuhan</td>
-            <td>10000</td>
-            <td>60</td>
-        </tr>
-        <tr>
-            <td>8(2)</td>
-            <td><input type="checkbox" value="8.2"></td>
-            <td>Percobaan Pembunuhan</td>
-            <td>4500</td>
-            <td>45</td>
-        </tr>
-        <tr>
-            <td>9(1)</td>
-            <td><input type="checkbox" value="9.2"></td>
-            <td>Penodongan Pada Warga Sipil</td>
-            <td>1000</td>
-            <td>30</td>
-        </tr>
-        <tr>
-            <td>9(2)</td>
-            <td><input type="checkbox" value="9.2"></td>
-            <td>Penyanderaan</td>
-            <td>1250</td>
-            <td>30</td>
-        </tr>
-    </table>
-
-    <div class="section-title">TINDAK PIDANA TERHADAP HARTA BENDA</div>
-    <table id="offenseTable2">
-        <tr>
-            <th>PASAL(AYAT)</th>
-            <th>CEKLIS</th>
-            <th>PELANGGARAN</th>
-            <th>DENDA($)</th>
-            <th>MASA TAHANAN(BULAN)</th>
-        </tr>
-        <tr>
-            <td>10(1)</td>
-            <td><input type="checkbox" value="10.1"></td>
-            <td>Memberikan Informasi Palsu</td>
-            <td>450</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>10(2)</td>
-            <td><input type="checkbox" value="10.2"></td>
-            <td>Melakukan Penipuan</td>
-            <td>650</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>11(1)</td>
-            <td><input type="checkbox" value="11.1"></td>
-            <td>Pencurian</td>
-            <td>500</td>
-            <td>30</td>
-        </tr>
-        <tr>
-            <td>11(2)</td>
-            <td><input type="checkbox" value="11.2"></td>
-            <td>Percobaan Pencurian</td>
-            <td>450</td>
-            <td>15</td>
-        </tr>
-        <tr>
-            <td>12(1)</td>
-            <td><input type="checkbox" value="12.1"></td>
-            <td>Perampokan</td>
-            <td>1500</td>
-            <td>45</td>
-        </tr>
-        <tr>
-            <td>12(2)</td>
-            <td><input type="checkbox" value="12.2"></td>
-            <td>Perampokan Dengan Senjata Api</td>
-            <td>2150</td>
-            <td>60</td>
-        </tr>
-    </table>
-
-    <div class="section-title">TINDAK PIDANA TERHADAP SENJATA ILEGAL</div>
-    <table id="offenseTable3">
-        <tr>
-            <th>PASAL(AYAT)</th>
-            <th>CEKLIS</th>
-            <th>PELANGGARAN</th>
-            <th>DENDA($)</th>
-            <th>MASA TAHANAN(BULAN)</th>
-        </tr>
-        <tr>
-            <td>13(1)</td>
-            <td><input type="checkbox" value="13.1"></td>
-            <td>Kepemilikan Senjata Tajam/Tumpul Untuk Kejahatan</td>
-            <td>350</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>13(2)</td>
-            <td><input type="checkbox" value="13.2"></td>
-            <td>Kepemilikan Senjata Api Illegal Laras Pendek</td>
-            <td>500</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>13(3)</td>
-            <td><input type="checkbox" value="13.3"></td>
-            <td>Kepemilikan Senjata Api Illegal Laras Menengah</td>
-            <td>550</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>13(4)</td>
-            <td><input type="checkbox" value="13.4"></td>
-            <td>Kepemilikan Senjata Api Illegal Laras Panjang</td>
-            <td>600</td>
-            <td>25</td>
-        </tr>
-        <tr>
-            <td>14(1)</td>
-            <td><input type="checkbox" value="14.1"></td>
-            <td>Perdagangan Senjata Api Illegal</td>
-            <td>2500</td>
-            <td>25</td>
-        </tr>
-        <tr>
-            <td>14(2)</td>
-            <td><input type="checkbox" value="14.2"></td>
-            <td>Pembuangan Senjata Api Secara Sengaja</td>
-            <td>1000</td>
-            <td>25</td>
-        </tr>
-    </table>
-
-    <div class="section-title">TINDAK PIDANA TERHADAP KEAMANAN DAN KETERTIBAN UMUM</div>
-    <table id="offenseTable4">
-        <tr>
-            <th>PASAL(AYAT)</th>
-            <th>CEKLIS</th>
-            <th>PELANGGARAN</th>
-            <th>DENDA($)</th>
-            <th>MASA TAHANAN(BULAN)</th>
-        </tr>
-        <tr>
-            <td>15(1)</td>
-            <td><input type="checkbox" value="15.1"></td>
-            <td>Tidak Membawa Kartu Identitas</td>
-            <td>50</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>15(2)</td>
-            <td><input type="checkbox" value="15.2"></td>
-            <td>Berada Di TKP</td>
-            <td>150</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>15(3)</td>
-            <td><input type="checkbox" value="15.3"></td>
-            <td>Pencemaran Nama Baik</td>
-            <td>400</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>15(4)</td>
-            <td><input type="checkbox" value="15.4"></td>
-            <td>Perkelahian Di Tempat Umum</td>
-            <td>250</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>15(5)</td>
-            <td><input type="checkbox" value="15.5"></td>
-            <td>Memakai dan Melakukan Hal Tidak Sesonoh</td>
-            <td>250</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>15(6)</td>
-            <td><input type="checkbox" value="15.6"></td>
-            <td>Penganiayaan Terhadap Warga</td>
-            <td>350</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>15(7)</td>
-            <td><input type="checkbox" value="15.7"></td>
-            <td>Kerusuhan Di Tempat Umum</td>
-            <td>300</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>15(8)</td>
-            <td><input type="checkbox" value="15.8"></td>
-            <td>Pembajakan</td>
-            <td>750</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>15(9)</td>
-            <td><input type="checkbox" value="15.9"></td>
-            <td>Peperangan</td>
-            <td>750</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>16(1)</td>
-            <td><input type="checkbox" value="16.1"></td>
-            <td>Berada Di Zona Terlarang</td>
-            <td>250</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>16(2)</td>
-            <td><input type="checkbox" value="16.1"></td>
-            <td>Perburuan Illegal</td>
-            <td>300</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>16(3)</td>
-            <td><input type="checkbox" value="16.1"></td>
-            <td>Membawa Hewan Dilindungi</td>
-            <td>500</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>16(4)</td>
-            <td><input type="checkbox" value="16.3"></td>
-            <td>Perjudian Illegal</td>
-            <td>500</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>16(5)</td>
-            <td><input type="checkbox" value="16.3"></td>
-            <td>Mabuk Di Tempat Umum</td>
-            <td>500</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>16(6)</td>
-            <td><input type="checkbox" value="16.4"></td>
-            <td>Pelecahan Seksual</td>
-            <td>950</td>
-            <td>30</td>
-        </tr>
-    </table>
-
-    <div class="section-title">TINDAK PIDANA BARANG ILLEGAL DAN NARKOBA</div>
-    <table id="offenseTable5">
-        <tr>
-            <th>PASAL(AYAT)</th>
-            <th>CEKLIS</th>
-            <th>PELANGGARAN</th>
-            <th>DENDA($)</th>
-            <th>MASA TAHANAN(BULAN)</th>
-        </tr>
-        <tr>
-            <td>17(1)</td>
-            <td><input type="checkbox" value="17.1"></td>
-            <td>Penyalahgunaan Barang Netral</td>
-            <td>500</td>
-            <td>15</td>
-        </tr>
-        <tr>
-            <td>17(2)</td>
-            <td><input type="checkbox" value="17.2"></td>
-            <td>Memiliki atau Menyimpan Barang Illegal</td>
-            <td>500</td>
-            <td>15</td>
-        </tr>
-        <tr>
-            <td>17(3)</td>
-            <td><input type="checkbox" value="17.3"></td>
-            <td>Perdagangan Barang Illegal</td>
-            <td>750</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>17(4)</td>
-            <td><input type="checkbox" value="17.4"></td>
-            <td>Memproduksi Barang Illegal</td>
-            <td>1000</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>17(5)</td>
-            <td><input type="checkbox" value="17.5"></td>
-            <td>Mengonsumsi Narkoba</td>
-            <td>500</td>
-            <td>10</td>
-        </tr>
-    </table>
-
-    <div class="section-title">TINDAK PIDANA TERHADAP APARATUR NEGARA</div>
-    <table id="offenseTable6">
-        <tr>
-            <th>PASAL(AYAT)</th>
-            <th>CEKLIS</th>
-            <th>PELANGGARAN</th>
-            <th>DENDA($)</th>
-            <th>MASA TAHANAN(BULAN)</th>
-        </tr>
-        <tr>
-            <td>18(1)</td>
-            <td><input type="checkbox" value="18.1"></td>
-            <td>Menghalangi Tugas Perintah</td>
-            <td>350</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>18(2)</td>
-            <td><input type="checkbox" value="18.2"></td>
-            <td>Menolak Surat Tilang atau Perintah Resmi</td>
-            <td>500</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>18(3)</td>
-            <td><input type="checkbox" value="18.3"></td>
-            <td>Melarikan Diri</td>
-            <td>150</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>18(4)</td>
-            <td><input type="checkbox" value="18.4"></td>
-            <td>Membahayakan Petugas</td>
-            <td>500</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>18(5)</td>
-            <td><input type="checkbox" value="18.5"></td>
-            <td>Menyerang Petugas</td>
-            <td>550</td>
-            <td>15</td>
-        </tr>
-        <tr>
-            <td>18(6)</td>
-            <td><input type="checkbox" value="18.6"></td>
-            <td>Menyuap Aparat Pemerintah</td>
-            <td>1000</td>
-            <td>15</td>
-        </tr>
-        <tr>
-            <td>18(7)</td>
-            <td><input type="checkbox" value="18.7"></td>
-            <td>Pencemaran Nama Baik Instansi Pemerintah</td>
-            <td>500</td>
-            <td>25</td>
-        </tr>
-    </table>
-
-    <div class="section-title">TINDAK PIDANA LALU LINTAS</div>
-    <table id="offenseTable7">
-        <tr>
-            <th>PASAL(AYAT)</th>
-            <th>CEKLIS</th>
-            <th>PELANGGARAN</th>
-            <th>DENDA($)</th>
-            <th>MASA TAHANAN(BULAN)</th>
-        </tr>
-        <tr>
-            <td>19(1)</td>
-            <td><input type="checkbox" value="19.1"></td>
-            <td>Kelengkapan Berkendara</td>
-            <td>250</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>19(2)</td>
-            <td><input type="checkbox" value="19.2"></td>
-            <td>Pelanggaran Lalu Lintas</td>
-            <td>150</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>19(3)</td>
-            <td><input type="checkbox" value="19.3"></td>
-            <td>Batas Kecepatan</td>
-            <td>150</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>19(4)</td>
-            <td><input type="checkbox" value="19.4"></td>
-            <td>Parkir Illegal</td>
-            <td>100</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>19(5)</td>
-            <td><input type="checkbox" value="19.5"></td>
-            <td>Modifikasi Illegal</td>
-            <td>200</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>19(6)</td>
-            <td><input type="checkbox" value="19.6"></td>
-            <td>Membahayakan Pengendara Lain</td>
-            <td>500</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>19(7)</td>
-            <td><input type="checkbox" value="19.7"></td>
-            <td>Balapan Liar</td>
-            <td>500</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>19(8)</td>
-            <td><input type="checkbox" value="19.9"></td>
-            <td>Kendaraan Milik Pelaku</td>
-            <td>450</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>19(9)</td>
-            <td><input type="checkbox" value="19.10"></td>
-            <td>Kendaraan Di Zona Terlarang</td>
-            <td>350</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>19(10)</td>
-            <td><input type="checkbox" value="19.11"></td>
-            <td>Kendaraan Membawa Barang Illegal</td>
-            <td>650</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>19(11)</td>
-            <td><input type="checkbox" value="19.11"></td>
-            <td>Kendaraan Membawa Senjata Illegal</td>
-            <td>650</td>
-            <td>10</td>
-        </tr>
-    </table>
-
-    <div class="footer">
-        Instagram <a href="https://www.instagram.com/hanief.16/">Klik Disini</a><br>
-        YouTube Gaming <a href="https://www.youtube.com/@hanskuy_gaming">Klik Disini</a><br>
-        YouTube Motovlog <a href="https://www.youtube.com/@hanskuy.motovlog">Klik Disini</a><br>
-        TikTok <a href="https://www.tiktok.com/@hanskuy.16">Klik Disini</a><br>
-        Discord <a href="https://discord.gg/mmaydRHVKq">Klik Disini</a><br>
-        Developer By : &#129332; HANSKUY16 &#129332;
+    <!-- Donate -->
+    <div class="icon-card">
+      <div class="icon-circle icon-donate">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+      </div>
+      <a href="https://bagibagi.co/HANSKUY" target="_blank" rel="noopener">
+        <button>CLICK HERE</button>
+      </a>
     </div>
 
-    <script>
-        function displayResult() {
-            const name = document.getElementById("name").value;
-            const resultBox = document.getElementById("resultBox");
-            resultBox.innerHTML = "";
+    <!-- Ambulance -->
+    <div class="icon-card">
+      <div class="icon-circle icon-ambulance">
+        <i class="fa-solid fa-ambulance"></i>
+      </div>
+      <a href="https://wa.me/6282125567099?text=Halo%20Hanskuy%20Ambulance%20Service,%20Saya%20Ingin%20Meminta%20Bantuan%20Perihal%20Layanan%20Ambulance%20🙏" target="_blank" rel="noopener">
+        <button>CALL / BOOK</button>
+      </a>
+    </div>
 
-            if (!name) {
-                resultBox.style.display = "block";
-                resultBox.textContent = "Harap Isi Nama Terlebih Dahulu..";
-                return;
-            }
+  </div>
 
-            let uuList = [];
-            let pelanggaranList = [];
-            let totalDenda = 0;
-            let totalPenjara = 0;
+  <!-- Deskripsi -->
+  <div class="description">
+    🚑 Layanan Ambulans Siaga 24 Jam. Kami Menyediakan Layanan Ambulans Profesional Untuk Berbagai Kebutuhan, Termasuk Pengantaran Pasien Kontrol Ke Rumah Sakit, Pengantaran Jenazah Dengan Penuh Penghormatan, Serta Layanan Antar Kota Maupun Luar Kota Dengan Armada Yang Terawat Dan Nyaman. Kami Berkomitmen Memberikan Pelayanan Cepat, Aman, Dan Terpercaya Demi Menunjang Kebutuhan Transportasi Medis Anda. Untuk Informasi Lebih Lanjut Mengenai Harga Dan Pemesanan, Silakan Hubungi Kontak Yang Sudah Tersedia.
+  </div>
 
-            const collectData = (tableId) => {
-                const checkboxes = document.querySelectorAll(`#${tableId} input[type='checkbox']`);
-                checkboxes.forEach((checkbox) => {
-                    if (checkbox.checked) {
-                        const row = checkbox.closest("tr");
-                        uuList.push(row.cells[0].textContent);
-                        pelanggaranList.push(row.cells[2].textContent);
-                        totalDenda += parseInt(row.cells[3].textContent);
-                        totalPenjara += parseInt(row.cells[4].textContent);
-                    }
-                });
-            };
-
-            collectData("offenseTable1");
-            collectData("offenseTable2");
-            collectData("offenseTable3");
-            collectData("offenseTable4");
-            collectData("offenseTable5");
-            collectData("offenseTable6");
-            collectData("offenseTable7");
-
-            if (uuList.length === 0) {
-                resultBox.style.display = "block";
-                resultBox.textContent = "Harap Pilih Salah Satu Pelanggaran.";
-                return;
-            }
-
-            resultBox.style.display = "block";
-            resultBox.innerHTML = `Nama Suspect : ${name}<br>Pasal(Ayat) : ${uuList.join(", ")}<br>Pelanggaran : ${pelanggaranList.join(", ")}<br>Total Denda : ${totalDenda}<br>Total Penjara : ${totalPenjara} bulan`;
-        }
-    </script>
 </body>
 </html>
