@@ -1,149 +1,378 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Layanan Ambulance - JABODETABEK (inspired)</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T.I.M.B.E.R Ambulance</title>
+
   <style>
-    :root{--accent:#d32f2f;--accent-2:#0b7a75;--bg:#f7f9fb;--text:#1f2937;--muted:#6b7280}
-    *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;line-height:1.4;margin:0;color:var(--text);background:var(--bg)}
-    header{background:#afafaf;box-shadow:0 3px 12px rgba(15,23,42,0.06);position:sticky;top:0;z-index:50}
-    .container{max-width:1100px;margin:0 auto;padding:0 18px}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:46px}
-    .brand h1{font-size:20px;margin:0}
-    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0}
-    nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:8px}
-    nav a.cta{background:var(--accent);color:#fff}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:40px 0}
-    .hero-left h2{font-size:32px;margin:0 0 12px}
-    .hero-left p{color:var(--muted);margin:0 0 18px}
-    .buttons{display:flex;gap:12px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600}
-    .btn.primary{background:var(--accent);color:#fff}
-    .btn.outline{background:#fff;border:1px solid #e6e9ee;color:var(--text)}
+    body {
+      background: #050505;
+      color: #fff;
+    }
 
-    .card{background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
-    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
-    .service{padding:16px;border-radius:12px;background:#fff}
-    .service h4{margin:8px 0 6px}
-    .service p{margin:0;color:var(--muted);font-size:14px}
+    header {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.95)),
+        url("https://cdn.discordapp.com/attachments/1196219560282570892/1499057495300243618/5d69aa0d-75dd-4548-9ca6-6e5283a09441.png?ex=69f36996&is=69f21816&hm=54eb6725ea3b148c72e74c172e3667c7f8f991bd0ad1b4ce98b9ae1b8472ae48&");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 40px 8%;
+    }
 
-    .faq{margin:22px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    footer{padding:28px 0;color:var(--muted)}
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.85);
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      border-bottom: 1px solid #b30000;
+    }
 
-    /* responsive */
-    @media (max-width:980px){.hero{grid-template-columns:1fr;}.services{grid-template-columns:repeat(2,1fr)}.hero-right{order:2}}
-    @media (max-width:620px){.nav{padding:10px 0}.services{grid-template-columns:1fr}.container{padding:0 14px}.brand h1{font-size:18px}}
+    nav h2 {
+      color: #ff2b2b;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ff2b2b;
+    }
+
+    .hero {
+      max-width: 650px;
+      margin-top: 70px;
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      color: #ff2b2b;
+      text-shadow: 0 0 20px red;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #ddd;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #c40000;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 0 20px rgba(255,0,0,0.6);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff2b2b;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 36px;
+      color: #ff2b2b;
+      margin-bottom: 40px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #111;
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid #5c0000;
+      box-shadow: 0 0 15px rgba(255,0,0,0.15);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(255,0,0,0.4);
+    }
+
+    .card h3 {
+      color: #ff3838;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .slider-container {
+      position: relative;
+      max-width: 600px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 2px solid #8b0000;
+      box-shadow: 0 0 35px rgba(255,0,0,0.35);
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 520px;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(180,0,0,0.85);
+      color: white;
+      border: none;
+      font-size: 30px;
+      padding: 12px 18px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .prev {
+      left: 15px;
+    }
+
+    .next {
+      right: 15px;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 5px;
+      background: #555;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: #ff2b2b;
+      box-shadow: 0 0 10px red;
+    }
+
+    .contact {
+      background: linear-gradient(135deg, #120000, #050505);
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: #ff2b2b;
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      color: #ddd;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 25px;
+      color: #aaa;
+      border-top: 1px solid #5c0000;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .slide {
+        height: 320px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <img src="https://i.ibb.co.com/qL6bJpss/Helm-2.jpg" alt="Logo Helm Hanskuy">
-        <div>
-          <h1 style="margin:0">LAYANAN AMBULANCE JABODETABEK</h1>
-          <div style="font-size:12px;color:#fff(--muted);margin-top:2px">HANSKUY EMERGENCY SERVICE</div>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#services">Layanan</a></li>
-          <li><a href="#about">Tentang</a></li>
-          <li><a href="#contact">Kontak</a></li>
-        </ul>
-      </nav>
+
+  <nav>
+    <h2>T.I.M.B.E.R Ambulance Care</h2>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#unit">Unit</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+  </nav>
+
+  <header id="home">
+    <div class="hero">
+      <h1>Tim Muda Beraksi Ambulance 24 Jam</h1>
+      <p>
+        T.I.M.B.E.R Ambulance Adalah Layanan Ambulance Emergency Yang Siap Siaga 24 Jam Nonstop Untuk Memberikan Pertolongan Medis Cepat, Tepat, Dan Profesional Kapan Pun Dibutuhkan.
+      </p>
+      <a href="https://wa.me/6285891520841" class="btn">Call Admin 1</a>
+      <a href="https://wa.me/6289531889430" class="btn">Call Admin 2</a>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-left">
-        <h2>Ambulance Cepat & Profesional Di Seluruh JABODETABEK</h2>
-        <p>Kami Menyediakan Layanan Ambulans 24 Jam — Antar Jemput Pasien Control, Antar Jemput Jenazah, Evakuasi Pasien, Standby Event, Siaga Kebencanaan dan Respon Kecelakaan Dengan Tenaga Medis Berpengalaman.</p>
-        <div class="buttons">
-          <a class="btn primary" href="https://wa.me/6282125567099?text=Halo%20Hanskuy%20Ambulance%20Service,%20Saya%20Ingin%20Meminta%20Bantuan%20Perihal%20Layanan%20Ambulance" target="_blank"><i class="fa fa-phone"></i> Call Center 1</a>
-          <a class="btn primary" href="https://wa.me/6285891520841?text=Halo%20Saya%20Ingin%20Meminta%20Bantuan%20Perihal%20Layanan%20Ambulance" target="_blank"><i class="fa fa-phone"></i> Call Center 2</a>
-          <a class="btn primary" href="https://wa.me/6282125567099?text=Halo%20Saya%20Ingin%20Menanyakan%20Biaya%20Service/Pemasangan" target="_blank"><i class="fa fa-wrench"></i> Service & Installation</a>
-          <a class="btn primary" href="https://wa.me/6282125567099?text=Halo%20Saya%20Ingin%20Menanyakan%20Biaya%20Layanan%20Administrasi%20Kendaraan" target="_blank"><i class="fa fa-book"></i> Biro Jasa</a>
-        </div>
+  <section id="layanan">
+    <h2 class="title">Layanan Kami</h2>
 
-        <div style="margin-top:18px;display:flex;gap:12px">
-          <div class="card" style="display:flex;flex-direction:column;gap:6px">
-            <strong>Operasional 24 Jam</strong>
-            <span style="color:var(--muted);font-size:13px">Respon Cepat dan Kendaraan Siap 24/7</span>
-          </div>
-          <div class="card" style="display:flex;flex-direction:column;gap:6px">
-            <strong>Tenaga Medis</strong>
-            <span style="color:var(--muted);font-size:13px">Paramedis dan Perawat Terlatih</span>
-          </div>
-        </div>
+    <div class="info-grid">
+      <div class="card">
+        <h3>🚑 Pasien Emergency</h3>
+        <p>Penanganan Cepat Untuk Kondisi Darurat Medis 24 Jam Dengan Tim Profesional.</p>
       </div>
-      <div class="hero-right">
-        <img src="https://i.ibb.co.com/RT4nBz1r/Untitled-design.jpg" alt="Gambar Ambulance" style="width: 100%; border-radius: 12px;">
+
+            <div class="card">
+        <h3>🏥 Pasien Kontrol & Penjemputan Pasien</h3>
+        <p>Layanan Antar Jemput Pasien Untuk Kebutuhan Kontrol Rutin Maupun Penjemputan Dari Lokasi Menuju Fasilitas Kesehatan Dengan Aman Dan Nyaman.</p>
       </div>
-    </section>
 
-    <section id="services">
-      <h3>Layanan Kami</h3>
-      <div class="services">
-        <div class="service card"><i class="fa fa-ambulance fa-2x"></i><h4>Transport Pasien</h4><p>Layanan Transport Pasien Kami Siap Membantu Pemindahan Pasien Dari Rumah Ke Rumah Sakit, Antar Rumah Sakit, Maupun Kembali Ke Rumah Dengan Aman Dan Nyaman. Setiap Perjalanan Didukung Oleh Kru Profesional Dan Peralatan Medis Sesuai Kebutuhan Pasien.</p></div>
-        <div class="service card"><i class="fa fa-hospital fa-2x"></i><h4>Rujukan Rumah Sakit</h4><p>Kami Melayani Pengantaran Pasien Ke Berbagai Rumah Sakit Di Wilayah JABODETABEK Dengan Koordinasi Yang Baik Bersama Tenaga Medis Dan Pihak Rumah Sakit Tujuan. Prioritas Kami Adalah Ketepatan Waktu Dan Keselamatan Selama Proses Pengantaran.</p></div>
-        <div class="service card"><i class="fa fa-heartbeat fa-2x"></i><h4>Evakuasi Medis</h4><p>Layanan Evakuasi Medis Kami Diperuntukkan Bagi Kondisi Darurat Atau Pasien Yang Membutuhkan Penanganan Segera. Tim Kami Siap Bergerak Cepat Dengan Dukungan Tenaga Medis Terlatih, Peralatan Lengkap, Serta Komunikasi Terpadu Dengan Fasilitas Kesehatan.</p></div>
-        <div class="service card"><i class="fa fa-wrench fa-2x"></i><h4>Sirine Service & Installation</h4><p>Menyediakan Layanan Pemasangan dan Service Sirine Profesional. Tim Kami Memiliki Teknisi Berpengalaman Yang Siap Memberikan Solusi Terbaik Sesuai Kebutuhan Anda. Selain Pemasangan, Kami Juga Menawarkan Jasa Perbaikan dan Menjual Barang-Barang. Kami Akan Memastikan Sirine Anda Berfungsi Dengan Optimal. Kami Mengutamakan Keamanan dan Kepuasan Pelanggan, Serta Menjamin Kualitas Layanan Yang Terpercaya.</p></div>
-        <div class="service card"><i class="fa fa-book fa-2x"></i><h4>Biro Jasa</h4><p>Kami Hadir Untuk Memudahkan Urusan Administrasi Kendaraan Anda, Menyediakan Layanan Profesional Dalam Perpanjangan Maupun Pembuatan Baru Surat Izin Mengemudi (SIM) Serta Surat Tanda Nomor Kendaraan (STNK). Kami Memastikan Proses Cepat, Efisien, Dan Terpercaya, Sehingga Anda Dapat Terhindar Dari Kerumitan Birokrasi. Percayakan Urusan Kendaraan Anda Kepada Kami, Dan Nikmati Kemudahan Serta Kenyamanan Dalam Setiap Prosesnya.</p></div>
+      <div class="card">
+        <h3>⚰️ Pengantaran Jenazah</h3>
+        <p>Layanan Khusus Pengantaran Jenazah Dengan Aman, Dan Profesional.</p>
       </div>
-    </section>
 
-    <section id="about">
-      <h3>Tentang Kami</h3>
-      <div class="card" style="padding:18px">Kami Adalah Tim Layanan Ambulans Berpengalaman Yang Beroperasi Di Wilayah JABODETABEK. Fokus Utama Kami Adalah Keselamatan Pasien, Respon Cepat, Serta Komunikasi Yang Transparan Dengan Keluarga Dan Fasilitas Kesehatan.
-Beberapa Unit Kami Juga Bekerja Sama Dengan Komunitas Dan Relawan Ambulans Yang Siap Memberikan Pengawalan Untuk Memastikan Perjalanan Pasien Lebih Aman Dan Lancar, Terutama Dalam Situasi Darurat.</div>
-    </section>
+      <div class="card">
+        <h3>🎪 Stanby Event</h3>
+        <p>Penyediaan Ambulans Dan Tim Medis Untuk Mendukung Keamanan Acara Atau Event.</p>
+      </div>
 
-    <section class="faq">
-      <div class="card"><h4>Berapa Tarif Layanan Ambulance?</h4><p style="color:var(--muted)">Tarif Bervariasi Tergantung Rute dan Jenis Layanan, Hubungi Kami Untuk Estimasi Lebih Lanjut.</p></div>
-      <div class="card"><h4>Apakah Ada Tenaga Medis Di Dalam Ambulans?</h4><p style="color:var(--muted)">Ya, Kendaraan Kami Dilengkapi Paramedis/Perawat Sesuai Kebutuhan Pasien.</p></div>
-    </section>
+      <div class="card">
+        <h3>🚨 Evakuasi Kecelakaan</h3>
+        <p>Respon Cepat Untuk Evakuasi Korban Kecelakaan Dengan Penanganan Medis Awal.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact">
-      <h3>Kontak & Lokasi</h3>
-      <div style="display:flex;gap:16px;flex-wrap:wrap">
-        <div class="card" style="flex:1;min-width:240px">
-          <strong>Alamat kantor</strong>
-          <p style="margin:6px 0;color:var(--muted)">Mampang, Jakarta Selatan & Margonda, Depok </p>
-          <p><i class="fa fa-envelope"></i> haniefbusiness16@gmail.com</p>
-        </div>
+  <section id="unit">
+    <h2 class="title">Galeri Unit Ambulance</h2>
 
-        <div class="card" style="width:320px;min-width:240px">
-  <strong>Ikuti Kami</strong>
-  <p style="margin:8px 0;display:flex;flex-direction:column;gap:6px">
-    <a href="https://www.instagram.com/hanief.16/" style="text-decoration:none"><i class="fab fa-instagram"></i> Instagram</a>
-    <a href="https://www.tiktok.com/@hanskuy.16" style="text-decoration:none"><i class="fab fa-tiktok"></i> TikTok</a>
-    <a href="https://bagibagi.co/HANSKUY" style="text-decoration:none"><i class="fa-solid fa-hand-holding-heart"></i> Donasi</a>
-    <a href="https://www.youtube.com/@hanskuy.motovlog" style="text-decoration:none"><i class="fab fa-youtube"></i> YouTube</a>
-  </p>
-</div>
-    </section>
+    <div class="slider-container">
+      <div class="slider" id="slider">
+        <div class="slide"><img src="https://cdn.discordapp.com/attachments/1196219560282570892/1499065522149523668/Galeri_5.jpeg?ex=69f3710f&is=69f21f8f&hm=ec7ee0e7a1cb4c16afc82abc714346b829bdf3738675d4324912e55ddafcbc27&"></div>
+        <div class="slide"><img src="https://cdn.discordapp.com/attachments/1196219560282570892/1499065516231364708/Galeri_4.jpeg?ex=69f3710e&is=69f21f8e&hm=88fc7310aa6258b0cfd2a396b07c455db31a22f3ecfbdeeacb7d70e4a30b4435&"></div>
+        <div class="slide"><img src="https://cdn.discordapp.com/attachments/1196219560282570892/1499065503077896432/Galeri_3.jpeg?ex=69f3710b&is=69f21f8b&hm=60b5af7a6a44e102331c0c0f6d4db171368ff7f4ec24f5d84729de7b61518194&"></div>
+        <div class="slide"><img src="https://cdn.discordapp.com/attachments/1196219560282570892/1499065492131020960/Galeri_2.jpeg?ex=69f37108&is=69f21f88&hm=debfa3506d65dbf8b71d8ef5ebf76e2cab95b8b41840f000f47e873c34f5afd0&"></div>
+        <div class="slide"><img src="https://cdn.discordapp.com/attachments/1196219560282570892/1499065485054971904/Galeri_1.jpeg?ex=69f37106&is=69f21f86&hm=bf94b6704299ed53461d620021e5ebbf29179ee33e16c2303ba8533071c60f07&"></div>
+      </div>
 
-  </main>
+      <button class="slider-btn prev" onclick="prevSlide()">❮</button>
+      <button class="slider-btn next" onclick="nextSlide()">❯</button>
+    </div>
+
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <section class="contact" id="kontak">
+    <h2>Kontak Darurat</h2>
+    <p>Telepon / WhatsApp : 0858-9152-0841</p>
+    <p>Alamat : Jl. Ir. H. Juanda, Bakti Jaya, Depok, Depok Timur</p>
+    <p>Operasional : 24 Jam Setiap Hari</p>
+    <br>
+    <a href="https://wa.me/6285891520841" class="btn">Pesan Ambulance</a>
+  </section>
 
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
-      <div>&copy; <span id="year"></span> Layanan Ambulance JABODETABEK — All rights reserved</div>
-      <div style="font-size:13px;color:var(--muted)">Made with ❤️ — H.E.S (Hanskuy Emergency Service)</div>
-    </div>
+    <p>© 2026 T.I.M.B.E.R Ambulance. Emergency Medical Service.</p>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const slider = document.getElementById("slider");
+    const slides = document.querySelectorAll(".slide");
+    const dotsContainer = document.getElementById("dots");
+
+    let index = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide() {
+      slider.style.transform = `translateX(-${index * 100}%)`;
+
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[index].classList.add("active");
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      showSlide();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      showSlide();
+    }
+
+    function goToSlide(i) {
+      index = i;
+      showSlide();
+    }
+
+    setInterval(nextSlide, 4000);
+    showSlide();
   </script>
+
 </body>
 </html>
