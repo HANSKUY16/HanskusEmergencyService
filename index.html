@@ -1,1218 +1,820 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Tech Tutorial Hub</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-page: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-search: #ffffff;
-            --text-title: #0f172a;
-            --text-body: #475569;
-            --border-color: #e2e8f0;
-            --primary: #4f46e5;
-            --primary-glow: rgba(79, 70, 229, 0.08);
-            --accent: #06b6d4;
-            --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            --footer-bg: #090d16;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>METHODE APK PREMIUM</title>
+<style>
+  :root{
+    --ink:#1B2A41;
+    --ink-soft:#2C3E5C;
+    --paper:#F6F1E4;
+    --paper-card:#FFFDF7;
+    --amber:#E0A438;
+    --rust:#B5482F;
+    --teal:#2F6F63;
+    --line:#DCD3BC;
+    --text:#22262B;
+    --text-soft:#5B5F66;
+    --serif:"Fraunces","Iowan Old Style",Georgia,serif;
+    --sans:"Inter","Segoe UI",Roboto,sans-serif;
+    --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.5;
+  }
+  a{color:inherit;}
 
-        .dark-mode {
-            --bg-page: #030712;
-            --bg-card: #0b0f19;
-            --bg-search: #111827;
-            --text-title: #f9fafb;
-            --text-body: #9ca3af;
-            --border-color: #1f2937;
-            --primary: #818cf8;
-            --primary-glow: rgba(129, 140, 248, 0.15);
-            --accent: #22d3ee;
-            --card-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02);
-            --card-shadow-hover: 0 0 20px rgba(129, 140, 248, 0.1);
-        }
+  /* ===== Hero ===== */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    padding:56px 6vw 74px;
+    border-bottom:6px solid var(--amber);
+    text-align:center;
+  }
+  .hero-mark{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    color:var(--amber);
+    border:1px solid var(--amber);
+    padding:3px 10px;
+    border-radius:2px;
+    margin-bottom:16px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(32px,5.5vw,54px);
+    margin:0 0 10px;
+    letter-spacing:.01em;
+  }
+  .hero p{
+    font-family:var(--mono);
+    font-size:13.5px;
+    color:#C9D2E0;
+    margin:0 0 34px;
+  }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
+  .search-wrap{
+    max-width:640px;
+    margin:0 auto;
+    position:relative;
+  }
+  .search-wrap input{
+    width:100%;
+    font-family:var(--sans);
+    font-size:16px;
+    padding:17px 20px 17px 48px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:var(--paper-card);
+    color:var(--text);
+    outline:none;
+  }
+  .search-wrap input:focus{
+    box-shadow:0 0 0 3px rgba(224,164,56,.45);
+  }
+  .search-wrap svg{
+    position:absolute;
+    left:17px; top:50%;
+    transform:translateY(-50%);
+    width:18px; height:18px;
+    stroke:var(--text-soft);
+  }
 
-        body {
-            background-color: var(--bg-page);
-            color: var(--text-body);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+  /* ===== Main / grid ===== */
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:46px 6vw 90px;
+  }
+  .result-count{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-soft);
+    margin-bottom:20px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:20px;
+  }
 
-        .top-navbar {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            justify-content: flex-end;
-        }
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    box-shadow:3px 3px 0 var(--line);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{
+    transform:translate(-2px,-2px);
+    box-shadow:6px 6px 0 var(--amber);
+  }
+  .card-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .card-icon{
+    width:46px; height:46px;
+    border-radius:9px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    flex-shrink:0;
+  }
+  .card-id{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--rust);
+    letter-spacing:.08em;
+  }
+  .card-title{
+    font-family:var(--serif);
+    font-size:19px;
+    font-weight:700;
+    margin:2px 0 2px;
+    color:var(--ink);
+  }
+  .card-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.04em;
+    padding:4px 9px;
+    border-radius:999px;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .card-badge.is-video{ background:#EAE1FF; color:#4B3494; }
+  .card-badge.is-text{ background:#FBE6DB; color:var(--rust); }
+  .card-badge.is-both{ background:#DFF0EA; color:var(--teal); }
+  .card-desc{
+    font-size:14px;
+    color:var(--text-soft);
+    margin:0;
+    flex-grow:1;
+  }
+  .card-actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .card-watch, .card-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    text-decoration:none;
+    padding:11px 14px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease;
+    flex:1;
+  }
+  .card-watch{
+    color:var(--ink);
+    background:var(--amber);
+    border:1px solid var(--ink);
+    box-shadow:2px 2px 0 var(--ink);
+  }
+  .card-watch:hover{
+    transform:translate(-1px,-1px);
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .card-toggle{
+    color:var(--teal);
+    background:var(--paper-card);
+    border:1px solid var(--teal);
+  }
+  .card-toggle:hover{
+    background:#EAF4F1;
+  }
+  .card-toggle[aria-expanded="true"]{
+    background:var(--teal);
+    color:var(--paper-card);
+  }
+  .card-watch:focus-visible, .card-toggle:focus-visible, .pill:focus-visible, .search-wrap input:focus-visible{
+    outline:3px solid var(--teal);
+    outline-offset:2px;
+  }
+  .card-watch::before{content:"▶"; font-size:9px;}
+  .card-toggle::before{content:"📄"; font-size:11px;}
 
-        .theme-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-title);
-            padding: 10px 18px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+  .card-steps{
+    display:none;
+    margin:0;
+    padding:14px 16px 14px 34px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:13.5px;
+    color:var(--text);
+  }
+  .card-steps.open{display:block;}
+  .card-steps li{margin-bottom:7px;}
+  .card-steps li:last-child{margin-bottom:0;}
+  .card-steps a{ color:var(--teal); font-weight:600; }
+  .card-steps code{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:1px 5px;
+    font-family:var(--mono);
+    font-size:12px;
+  }
 
-        .theme-btn:hover {
-            border-color: var(--primary);
-            transform: translateY(-1px);
-        }
+  .empty{
+    text-align:center;
+    padding:60px 20px;
+    color:var(--text-soft);
+    font-family:var(--mono);
+    font-size:13px;
+    display:none;
+  }
 
-        header {
-            text-align: center;
-            padding: 10px 20px 35px 20px;
-        }
+  footer{
+    text-align:center;
+    padding:26px 6vw 44px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-soft);
+  }
 
-        header h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--text-title);
-            letter-spacing: -0.04em;
-            margin-bottom: 12px;
-        }
-
-        header h1 span {
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        header p {
-            font-size: 1.05rem;
-            color: var(--text-body);
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 500;
-        }
-
-        .search-area {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto 40px auto;
-            padding: 0 20px;
-        }
-
-        .search-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 16px 20px 16px 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            background-color: var(--bg-search);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            color: var(--text-title);
-            outline: none;
-            box-shadow: var(--card-shadow);
-        }
-
-        .search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--primary-glow);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 18px;
-            color: var(--text-body);
-            pointer-events: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 20px;
-            flex: 1;
-        }
-
-        /* PERUBAHAN UTAMA: Mengubah list menjadi grid kesamping */
-        .apk-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            align-items: start;
-        }
-
-        .apk-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
-            cursor: pointer;
-            box-shadow: var(--card-shadow);
-            position: relative;
-            overflow: hidden;
-            align-self: start;
-        }
-
-        .apk-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--card-shadow-hover);
-        }
-
-        /* Saat aktif, biarkan card mengambil space penjelasannya ke bawah */
-        .apk-card.active {
-            grid-column: span 1;
-        }
-
-        @media (min-width: 768px) {
-            .apk-card.active {
-                grid-column: span 2; /* Melebar 2 kolom jika dibuka pada layar pc/tablet agar rapi */
-            }
-        }
-
-        .card-main-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .app-meta {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .app-icon-box {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-glow);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .app-title-text h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-title);
-            letter-spacing: -0.02em;
-        }
-
-        .app-title-text span {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .action-arrow {
-            width: 28px;
-            height: 28px;
-            border-radius: 50px;
-            background: var(--bg-page);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-title);
-            font-size: 0.85rem;
-            transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .apk-card:hover .action-arrow {
-            transform: rotate(90deg);
-            background: var(--primary);
-            color: #ffffff;
-        }
-
-        .tutorial-container {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .apk-card.active .tutorial-container {
-            grid-template-rows: 1fr;
-        }
-
-        .tutorial-body {
-            overflow: hidden;
-        }
-
-        .tutorial-inner-content {
-            padding-top: 20px;
-            margin-top: 16px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .tutorial-inner-content h4 {
-            color: var(--text-title);
-            font-weight: 700;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            transform: translateX(-30px);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s;
-        }
-
-        .tutorial-inner-content ol li {
-            list-style: none;
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 10px;
-            color: var(--text-body);
-            font-size: 0.92rem;
-            font-weight: 500;
-            line-height: 1.5;
-            transform: translateX(-30px);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s;
-        }
-
-        .tutorial-inner-content ol li::before {
-            content: counter(item) "";
-            counter-increment: item;
-            position: absolute;
-            left: 0;
-            top: 2px;
-            width: 18px;
-            height: 18px;
-            background: var(--primary-glow);
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 0.7rem;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tutorial-inner-content ol {
-            counter-reset: item;
-        }
-
-        .apk-card.active .tutorial-inner-content h4,
-        .apk-card.active .tutorial-inner-content ol li {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .apk-card.active .tutorial-inner-content h4 { transition-delay: 0.04s; }
-        .apk-card.active .tutorial-inner-content ol li:nth-child(1) { transition-delay: 0.08s; }
-        .apk-card.active .tutorial-inner-content ol li:nth-child(2) { transition-delay: 0.12s; }
-        .apk-card.active .tutorial-inner-content ol li:nth-child(3) { transition-delay: 0.16s; }
-        .apk-card.active .tutorial-inner-content ol li:nth-child(4) { transition-delay: 0.20s; }
-        .apk-card.active .tutorial-inner-content ol li:nth-child(5) { transition-delay: 0.24s; }
-
-        footer {
-            background-color: var(--footer-bg);
-            color: #ffffff;
-            text-align: center;
-            padding: 50px 20px;
-            margin-top: 80px;
-        }
-
-        footer p {
-            font-size: 0.85rem;
-            opacity: 0.6;
-            margin-bottom: 25px;
-        }
-
-        /* Pembaruan Grid Tombol Sosial Media & Tautan di Bagian Bawah */
-        .footer-action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .footer-action-buttons a {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 12px 22px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .link-web { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .link-web:hover { background: rgba(255, 255, 255, 0.16); transform: translateY(-2px); }
-
-        .link-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-        .link-instagram:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220, 39, 67, 0.4); }
-
-        .link-whatsapp { background: #25d366; }
-        .link-whatsapp:hover { background: #20ba5a; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
-
-        .link-telegram { background: #0088cc; }
-        .link-telegram:hover { background: #0077b3; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4); }
-
-        .link-tiktok { background: #000000; border: 1px solid rgba(255, 255, 255, 0.2); }
-        .link-tiktok:hover { background: #111111; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1); }
-    </style>
+  @media (max-width:480px){
+    .hero{padding:44px 6vw 64px;}
+  }
+</style>
 </head>
 <body>
 
-    <div class="top-navbar">
-        <button class="theme-btn" onclick="toggleScreenMode()" id="modeButton">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-            <span>Mode Gelap</span>
-        </button>
-    </div>
+<header class="hero">
+  <span class="hero-mark">MATARAM SHOP</span>
+  <h1>METHODE APK PREMIUM</h1>
+  <p>Panduan Lengkap Mengenai Berbagai Metode Penggunaan Akun APK Premium </p>
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <input id="searchInput" type="text" placeholder="Cari nama tutorial atau aplikasi..." autocomplete="off">
+  </div>
+</header>
 
-    <header>
-        <h1><span>MATARAM SHOP</span> METHODE</h1>
-        <p>Pusat Panduan Paling Lengkap Untuk Membuat APK PREMIUM.</p>
-    </header>
+<main>
+  <p class="result-count" id="resultCount"></p>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="emptyState">Tidak ada tutorial yang cocok dengan pencarianmu.</p>
+</main>
 
-    <div class="search-area">
-        <div class="search-wrapper">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" id="appSearchInput" class="search-input" placeholder="Cari nama aplikasi premium..." onkeyup="filterPremiumApps()">
-        </div>
-    </div>
+<footer>Designed & Developed By : HANSKUY
+<footer>METHODE APK PREMIUM — © 2026 Mataram Shop. All Rights Reserved.
 
-    <div class="container">
-        <div class="apk-list" id="appsContainer">
+<script>
+/*
+  ====== DATA TUTORIAL ======
+  Tambah tutorial / aplikasi baru cukup dengan menambah satu objek baru
+  di array di bawah ini. Jangan lupa beri tanda koma "," setelah setiap
+  objek (kecuali objek yang paling terakhir).
 
-            <!-- 1. Alight Motion -->
-            <div <div class="apk-card" onclick="handleCardClick(this)">
-    <div class="card-main-info">
-        <div class="app-meta">
-            <div class="app-icon-box">🎬</div>
-            <div class="app-title-text"><h3>Alight Motion</h3><span>Video & Animation</span></div>
-        </div>
-        <div class="action-arrow">➔</div>
-    </div>
-    <div class="tutorial-container">
-        <div class="tutorial-body">
-            <div class="tutorial-inner-content">
-                <h4>⚙️ Panduan Instalasi Pro :</h4>
-                <h4>⏰ Durasi 1 Tahun</h4>
-                <ol>
-                    <li>Pencet Link <a href="https://generator.email" target="_blank" onclick="event.stopPropagation()" style="color: #00ff88; font-weight: bold; text-decoration: underline;">Email Generator</a>.</li>
-                    <li>Masukin Email Aligt Motion Yang Dibuat Di Generator Email.</li>
-                    <li>Login Am Lewat Email Yg Warnanya "merah".</li>
-                    <li>Masukin Email Am Tadi.</li>
-                    <li>Balik Ke Web Email Generator Tadi Nanti Bakal Muncul Notif.</li>
-                    <li>Pencet Link Yg Warna Biru Tulisan "login Ke Alight Creative".</li>
-                    <li>Otomatis Masuk Ke Am Dan Udah Premium.</li>
-                </ol>
-                <h4>‼️ Note ‼️</h4>
-                <h4>Nah, Jika Ingin Ngepremin Ke Akun Buyer Kalian, Kamu Pergi Ke Akun Am Gene Tadi Yang Sudah Prem Dan Di Loginin, Kamu Pencet Ubah, Pencet Autentikasi Ulang,lalu Ke Web Gene Tadi, Refresh, Lalu Klik Noreply Yang Warna Ijo Itu, Lalu Klik Log Ke Alight Creative, Nah Kan Bakal Disuruh Masukin Email, Kalian Masukin Email Buyer Kalian, Terus Bakal Kekirim Link Noreply Am Di Gmail Buyer, Lalu Kalian Log Ke Email Buyer, Dan Langsung Klik Aja Link Nya, Okey Done, Akun Buyer Kalian Sudah Prem, Tinggal Kalian Login Kan Aja Di Am.</h4>
-            </div>
-        </div>
-    </div>
-</div>
+  Formatnya:
 
-            <!-- 2. Apple Music -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🎵</div><div class="app-title-text"><h3>Apple Music</h3><span>Music & Audio</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Aktivasi Akun :</h4>
-                    <h4>⏰ Durasi 1 Bulan</h4>
-                    <ol>
-                        <li>Pertama² Wajib Buat Gmail Fresh, Bisa Buat Di PlayStore/google.</li>
-                        <li>Apple Music support Temp Mail, Tapi Tidak Semua Domain Support.</li>
-                        <li>Lalu Ke Playstore, Login Akun PlayStore Menggunakan Email Yang Udah Di Buat Tadi.</li>
-                        <li>Jika Sudah Login, Pergi Ke Langganan Dan Pembayaran,lalu Kaitkan Ewallet Kalian , Bisa Gopay,bisa Dana, Dll (Saran Aku Pakai Ewallet Kosongan).</li>
-                        <li>Jika Sudah, Kamuh Coba Download Appmus Nya Lalu Saat Log Di Apk Nya, Kamu Buat Akun Apple Di Apk Nya.</li>
-                        <li>Kalau Udah Buat Akun Apple Nya, Kalian Tinggal Ke Langganan,dan Coba Paket Prem Rp 0.</li>
-                        <li>Lalu Click,dan Kalian Bebas Mau Pilih Bagian Head Atau Inpdplan, Jika Sudah Kalian Tinggal Kaitkan Pembayaran Menggunakan Ewallet Kosongan,lalu Selesaikan Pembayaran Gausa Pakai Payment Yg Aktif (Sering Dipakai Trx, Tkut Nntinya Kesedot).</li>
-                        <li>Selamat Appmus Anda Sudah Premium.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  {
+    icon: "emoji singkat",
+    title: "Judul tutorial",
+    desc: "Deskripsi singkat 1 kalimat, selalu tampil di kartu.",
+    video: "https://link-video-tutorial"   // opsional, hapus baris ini kalau tidak ada video
+    steps: ["Langkah 1...", "Langkah 2...", "Langkah 3..."]  // opsional, dipakai untuk tutorial teks
+  }
 
-            <!-- 3. Bstation -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">📺</div><div class="app-title-text"><h3>Bstation</h3><span>Anime & Video</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Premium :</h4>
-                    <h4>⏰ Durasi 7 Hari</h4>
-                    <ol>
-                        <li>Daftar Dan Masuk Akun Bstation (Wajib Akun Fresh Yg Blm Pernah Daftar Bstation)</li>
-                        <li>Kalau Udah Jadi Akunnya Klik Bstation Premium, Klik Uji Coba Gratis 7 Hari.</li>
-                        <li>Lanjutkan Pembayaran Menggunakan E Wallet Sesuai Kemauan Kamu.</li>
-                        <li>Jika Suda Premium Akunnya, Ke Play Store Klik Batalkan Langganan Agar Tidak Terkena Biaya Di Hari Setelah Berakhir Masa Premium Gratis 7 Hari Berikut Nya.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  Aturan tampilan otomatis:
+  - Ada "video" saja        -> tombol "Tonton Video"
+  - Ada "steps" saja        -> tombol "Baca Tutorial" (buka panel teks langkah demi langkah)
+  - Ada keduanya            -> kedua tombol tampil berdampingan
+  - Kalau steps tidak diisi tapi videonya kosong juga, kartu tetap tampil hanya dengan deskripsi.
 
-            <!-- 4. Canva -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🎨</div><div class="app-title-text"><h3>Canva</h3><span>Graphic Design</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Canva Pro :</h4>
-                    <h4>⏰ Durasi 30 Hari</h4>
-                    <ol>
-                        <li>Login Canva Bisa Menggunakan Temp Mail Namun Tidak Support Semua, Aku Sarankan Dari Website <a href="https://mail.premur.shop/" target="_blank" onclick="event.stopPropagation()" style="color: #00ff88; font-weight: bold; text-decoration: underline;">Klik Disini</a>.</li>
-                        <li>Cari Canva Login Disitu Masuk Aja Menggunakan Email.</li>
-                        <li>Nanti Muncul Penawaran Gratis 30d Yg Tulisan Nya Individu Atau Bisnis, Kalau Mau Head Yg Bisa Invite 100 Pencet Yg Bisnis.</li>
-                        <li>Klik Coba 30 Hari Wajib Pay Menggunakan Gopay Kosongan atau Payment Lainnya.</li>
-                        <li>Nanti Copot Aja Canva Di Gopay Di Akun Tersambung, Wajib Ada Jeda Atau Gak Beli Nokos Gopay Jadi 1 Nokos Bisa Premin 1.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  CATATAN PENTING soal tanda kutip di dalam "steps":
+  Karena setiap langkah ditulis di dalam tanda kutip ganda " ",
+  setiap tanda kutip ganda YANG ADA DI DALAM teks (misalnya pada tag
+  <a href="..."> ) harus diberi tanda "\" di depannya supaya tidak
+  dianggap sebagai penutup kutipan. Contoh yang BENAR:
+     "Buka link <a href=\"https://contoh.com\" target=\"_blank\">Klik di sini</a>."
+  Kalau ada satu saja kutip yang lupa di-escape, seluruh halaman akan
+  gagal dimuat (blank / error).
+*/
+  const tutorials = [
+    { icon:"🎬", title:"Alight Motion (Generator Email)", desc:"Aplikasi untuk membuat dan mengedit video animasi dengan berbagai efek profesional.",
+      steps:[
+        "Metode ini menggunakan BOT dengan sewa durasi 1 tahun.",
+        "Harga sewa 1 tahun yaitu hanya Rp 50.000.",
+        "Buka Telegram <a href=\"https://t.me/SupplyApkBot\" target=\"_blank\" rel=\"noopener\">BOT Alight Motion</a>.",
+        "Silakan gunakan dan tanyakan kepada owner dari bot tersebut apabila ada kendala."
+      ]
+    },
+    
+    { icon:"🎵", title:"Apple Music", desc:"Layanan Streaming Musik Yang Menyediakan Jutaan Lagu Dan Playlist Berkualitas Tinggi.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Siapkan Akun Google atau Google Suite Yang Udah Include Payment (Dana/Gopay/Dll).",
+        "Bebas Pilih Yang Mana Aja Vmos, Vsphone, Island.",
+        "Link <a href=\"https://cloud.vmoscloud.com\" target=\"_blank\" rel=\"noopener\">cloud.vmoscloud.com</a> Link <a href=\"https://cloud.vsphone.com\" target=\"_blank\" rel=\"noopener\">cloud.vsphone.com</a>.",
+        "Wajib Cek Terlebih Dahulu, Akun Google atau Google Suitenya Region/Wilayah Apa (Disarankan Region Indo)." 
+      ]
+    },
 
-            <!-- 5. Capcut -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">✂️</div><div class="app-title-text"><h3>Capcut</h3><span>Video Editor</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Instalasi Pro :</h4>
-                    <h4>⏰ Durasi 30d / 7d</h4>
+  { icon:"💄", title:"BeautyPlus", desc:"Aplikasi Edit Foto Dengan Berbagai Filter, Efek AI, Dan Fitur Beautify Untuk Hasil Yang Lebih Menarik.",
+    steps:[
+      "Download Island Di Play Store.",
+      "Install BeautyPlus Di Play Store.",
+      "Login Menggunakan Akun Fresh.",
+      "Tekan Pro Di Pojok Atas.",
+      "Tekan Uji Coba 7 Hari Free.",
+      "Tautkan Payment Yang Kalian Mau Pakai, Lalu Berlangganan.",
+      "Done Premium."
+    ]
+  },
 
-                    <h4>Durasi 1 Bulan</h4>
-                    <ol>
-                        <li>Wajib Gmail Fresh Baru Bikin.</li>
-                        <li>Masuk Ke Playstore Login Dengan Akun Gmail.</li>
-                        <li>Tambahkan Pembayaran (gopay Saldo Min 17k).</li>
-                        <li>Lalu Dowload Capcut Di Playstore Yang Sudah Menggunakan Gmail Fresh (wajib Hapus Capcut Sebelumnya).</li>
-                        <li>Wajib Di Hp Gada Email Lain Selain Email Pembayaran Karna (1x Buat Akun 1x Bayar Per Gmail).</li>
-                        <li>Kalo Udah Daftar Ke Capcut , Dengan Menggunakan Gmail.</li>
-                        <li>Verifikasi Terlebih Dahulu Kode Masuk Ke Gmail Akun.</li>
-                        <li>Kalo Udah Login (Pilih Tingkatkan/Upgrade).</li>
-                        <li>Ada Pilihan Standar,Pro,Tim.</li>
-                        <li>Pilih Ke Pro.</li>
-                        <li>Jika Tembus Akan Ada Promo Bulan Pertama "Plan Pro 14.500" & "Plan Standar 7.500".</li>
-                        <li>Tinggal Bayar.</li>
-                        <li>Ingat Gopay Wajib Bukan Pribadi Isi Paling Banyak 50k Biar Gak Kesedot!.</li>
-                    </ol>
+  { icon:"📺", title:"BStation", desc:"Platform Streaming Anime Dan Video Dengan Berbagai Konten Hiburan.",
+    steps:[
+      "Daftar & Masuk Akun Bstation (Wajib Akun Fresh Yang Belum Pernah Daftar Bstation).",
+      "Jika Akun Sudah Jadi, Klik Bstation Premium dan Klik Uji Coba Gratis 7 Hari.",
+      "Lanjutkan Pembayaran Menggunakan E-Wallet Sesuai Keinginan Kalian.",
+      "Jika Sudah Premium, Ke Playstore Lalu Klik Batalkan Langganan Agar Tidak Terkena Biaya Di Hari Setelah Berakhir Masa Premium Gratis Habis."
+    ]
+  },
 
-                    <h4>Durasi Trial 7 Hari</h4>
-                    <ol>
-                        <li>Buka Capcut Di Browser "capcut.com/signup" (Kalau HP Langsung Login Di App)</li>
-                        <li>Login Via Gmail (Disarankan Gmail Old).</li>
-                        <li>Isi Tanggal & Tahun Lahir Bebas.</li>
-                        <li>Upgrade/tingkatkan (Team/Pro Tergantung Dari Gmailnya).</li>
-                        <li>Payment Sesuai Keingginan Mau Pake Apa.</li>
-                        <li>Kalau Udah Sukses, Login Akun Cc Yang Gmailnya Di Hp.</li>
-                        <li>Buka Setinggan Bagian "kelola Akun".</li>
-                        <li>Pertama Change Bagian Email, Dari Gmail Utama Ubah Ke Temp Mail + Kata Sandi Juga Ubah Bebas.</li>
-                        <li>Tautkan Akun TikTok Yang Gk Pernah Connect Ke Capcut.</li>
-                        <li>Solusi Kalau Kalian Gak Bisa Buat Akun TikTok, Gunakan Akun Gsuite Kosongan.</li>
-                        <li>Putus Tautan Google.</li>
-                        <li>Setelah Putus Tautan Google Yang Awal, Tautkan Lagi Pake Akun Google Kosongan Seperti Gsuite.</li>
-                        <li>Lepas Lagi Tautan Tiktoknya.</li>
-                    </ol>
-                    <h4>‼️ Note ‼️</h4>
-                    <h4>Untuk Trial 7d Kenapa Harus Lepas Pasang Tautan Google dan TikTok? Agar 1 Gmail Bisa Buat Ratusan Akun.</h4>
-                </div></div></div>
-            </div>
+  { icon:"🎨", title:"Canva", desc:"Aplikasi Desain Grafis Untuk Membuat Poster, Presentasi, Logo, Dan Konten Media Sosial.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Buka Browser Bebas (Chrome/Firefox/Brave/Dll).",
+        "Buka Langsung canva.com.",
+        "Wajib Menggunakan Gmail atau Kalau Kalian Ingin Menggunakan Temp Mail Bisa Namun Tidak Support Semua.",
+        "Saran Website Temp Mail Support Canva Ada Di <a href=\"https://mataramshop.my.id\" target=\"_blank\" rel=\"noopener\">Mataramshop Domain Public</a>." 
+      ]
+    },
 
-            <!-- 6. Create Gmail Unlim -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">📧</div><div class="app-title-text"><h3>Create Gmail Unlim</h3><span>Tools & Utility</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Prosedur Pembuatan Tanpa Batas :</h4>
-                    <ol>
-                        <li>Pastikan Email Tumbal/induk Kalian Berumur Di Atas 21 Tahun Bs Di Hitung Dr Tanggal Lahir Di Gmail.</li>
-                        <li>Terverifikasi Nomor Telpon, Bukan Sekedar Tempel Nomor.</li>
-                        <li>Download Firefox Focus.</li>
-                        <li>Daftar Akun Anak, Pencet Belum Pernah Buat Gmail.</li>
-                        <li>Masukan Data Diri Gmail, Wajib Di Bawah 15 Tahun, Bisa Default 2015.</li>
-                        <li>Kalau Udh Selesai Muncul Verif Nomor, Isi Nomor Kalian Atau Beli Di Web Otp.</li>
-                        <li>Nanti Di Mintain Lagi Otp Dr Nomor HP Induk.</li>
-                        <li>2 Kali Otp = 1 Otp Nomor Yang Di Buat (custom) , 1 Otp Nomor Induk.</li>
-                        <li>Selesaikan Proses Verifikasi, Ubah Detail Kelahiran Jadi Di Atas 22 Tahun Atau Default 1999 Bisa.</li>
-                        <li>Keluar Family Link > Masuk / Login Goggle Dr Akun Anak Tadi, Nanti Di Dashboard Google Bakal Di Suruh Konfirmasi Perubahan.</li>
-                        <li>Tutorial Video <a href="https://youtu.be/b0ExbA8kPrM?si=JtxpX0UeSEbCQed8" target="_blank" onclick="event.stopPropagation()" style="color: #00ff88; font-weight: bold; text-decoration: underline;">Tutoriak Klik Disini</a>.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"✂️", title:"Capcut Version 1 Bulan", desc:"Aplikasi Edit Video Dengan Fitur Lengkap Seperti Efek, Transisi, Dan Subtitle Otomatis.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Buka Browser Bebas (Chrome/Firefox/Brave/Dll).",
+        "Ketik capcut.com/signup.",
+        "Login Menggunakan Gmail.",
+        "Klik Tingkatkan, Lalu Pilih Opsi Team 5 Seat/7 Seat.",
+        "Silahkan Payment Menggunakan E-Wallet Yang Kalian Punya (Saran Menggunakan NoKos).",
+        "Buat Akun TikTok Terlebih Dahulu.",
+        "Jika Sudah, Login Capcut Di HP Menggunakan Gmail Yang Tadi.",
+        "Buka Pengaturan dan Kelola Akun.",
+        "Masukan Email & Kata Sandi.",
+        "Tautkan Akun TikTok Yang Kalian Buat & Putus Tautan Akun Googlenya.",
+        "Selesai, Akun Gmail Tersebut Bisa Kalian Gunakan Lagi Untuk Membuat Akun Capcut Pro."
+      ]
+    },
 
-            <!-- 7. Crunchyroll -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🦊</div><div class="app-title-text"><h3>Crunchyroll</h3><span>Anime Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Premium :</h4>
-                    <ol>
-                        <li>COMING SOON</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"✂️", title:"Capcut Version 7 Hari", desc:"Aplikasi Edit Video Dengan Fitur Lengkap Seperti Efek, Transisi, Dan Subtitle Otomatis.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Download Applikasi Cloner Seperti (Multi App/Multi Cloner).",
+        "Clone Applikasi (Tiktok, TikTok Lite, Capcut, Chrome).",
+        "Buat Akun TikTok Menggunakan TempMail Aja Di TikTok Lite.",
+        "Login Akun Di TikTok Biasa.",
+        "Jika Sudah Buka Applikasi Capcut & Login Menggunakan TikTok.",
+        "Claim Trial 7 Hari Team/Indplan.",
+        "Silahkan Payment Menggunakan E-Wallet Yang Kalian Punya (Saran Menggunakan NoKos).",
+        "Buka Pengaturan dan Kelola Akun.",
+        "Masukan Email & Kata Sandi.",
+      ]
+    },
 
-            <!-- 8. Disney -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🏰</div><div class="app-title-text"><h3>Disney+</h3><span>Movie Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Login Otentikasi :</h4>
-                    <ol>
-                        <li>COMING SOON</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"📧", title:"Create Gmail Unlimited", desc:"Layanan Untuk Membuat Banyak Akun Gmail Dengan Mudah Dan Cepat.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Buka Browser Lalu Masuk Halaman Buat Akun Google.",
+        "Pilih Buat Akun Lalu Isi Nama Depan & Belakang.",
+        "Masukan Tanggal Lahir & Jenis Kelamin.",
+        "Pilih atau Buat Alamat Gmail Yang Diinginkan.",
+        "Buat Kata Sandi & Konfirmasi Password.",
+        "Selesaikan Proses Verifikasi Yang Diminta Google.",
+        "Jika Muncul Verifikasi Orang Tua, Lanjutkan Sesuai Petunjuk.",
+        "Setelah Akun Berhasil Dibuat, Masuk Ke Google Account/Akun Google.",
+        "Buka Menu Info Pribadi & Pastikan Data Akun Seperti Nama, Email, Tanggal Lahir dan Gender Sudah Benar.",
+        "Buka Menu Keluarga Anda Di Google.",
+        "Tambahkan Akun Yang Baru Dibuat Ke Grup Keluarga Jika Diperlukan.",
+        "Kembali Masuk Ke Akun Google & Masuk Ke Menu Keamanan dan Login.",
+        "Pilih Cara Anda Login Ke Google.",
+        "Tambahkan atau Ubah Nomor Telepon Pemulihan.",
+        "Lakukan Verifikasi Nomor HP Melalui Kode Yang Dikirim Google.",
+        "Tunggu Proses Penyimpanan & Pemeriksaan Selesai.",
+        "Setelah Verifikasi Berhasil, Akun Google Sudah Siap Digunakan dan Memiliki Nomor Pemulihan Untuk Keamanan Akun."
+      ]
+    },
 
-            <!-- 9. Dramabox -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🎭</div><div class="app-title-text"><h3>Dramabox</h3><span>Short Drama</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Unlocked Coins :</h4>
-                    <ol>
-                        <li>COMING SOON</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"🦊", title:"Crunchyroll", desc:"Platform Streaming Anime Resmi Dengan Koleksi Anime Terlengkap.",
+    steps:[
+      "Coming Soon."
+    ]
+  },
 
-            <!-- 10. Duolingo -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🦉</div><div class="app-title-text"><h3>Duolingo</h3><span>Education</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Aktivasi Super :</h4>
-                    <ol>
-                        <li>COMING SOON</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"☁️", title:"Dropbox", desc:"Layanan Penyimpanan Cloud Untuk Menyimpan, Mencadangkan, Dan Berbagi File Secara Online.",
+    steps:[
+      "Ke Web https://dropbox.com.",
+      "Masuk Dengan Akun Fresh.",
+      "Klik Tingkatkan, Nah Ada 3 Pilihan, 1 Berbayar Dan Sisa 2 Gratis. Pilih Standard Atau Advanced.",
+      "Pilih Salah Satu, Lalu Tautkan Payment Kalian.",
+      "Berlangganan, Done Premium. Jangan Lupa Lepaskan Tautan Langganan-Nya Ya!!."
+    ]
+  },
 
-            <!-- 11. Gemini -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">✨</div><div class="app-title-text"><h3>Gemini</h3><span>AI Assistant</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Advanced :</h4>
-                    <ol>
-                        <li>Ewallet Bebas Apa Aja Min 10k (dana, Spay, Gopay (usahain Pake Akun Yg G Kepake Biar Saldo Di Akun Utama Kalian G Kepotong).</li>
-                        <li>Akun Google Yang Belum Pernah Pake Trial, Kalo G Punya Bisa Bikin Akun Google Baru.</li>
-                        <li>Chrome New Update Version.</li>
-                        <li>Disarankan Mendownload Google One Di HP Agar Mempermudah Kalian</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"🎭", title:"Dramabox", desc:"Platform Streaming Drama Pendek Dengan Berbagai Genre Menarik.",
+    steps:[
+      "Ke Dramabox Pengguna Baru Bisa Dapet Harga 54rb.",
+      "Lakukan Pembayaran.",
+      "Batal Langganan Ke Biasa Di APK Play Store.",
+      "Buka Google Ketik (Reffund Google Play) Klik Yang Dramabox.",
+      "Tunggu Beberapa Hari Saldo Di Reffund."
+    ]
+  },
 
-            <!-- 12. Getcontact -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🔍</div><div class="app-title-text"><h3>Getcontact</h3><span>Utility Tools</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Premium Unlocked :</h4>
-                    <h4>Cara 1 :</h4>
-                    <ol>
-                        <li>Suruh Buyer Bikin Akun Get Contact (Pake Google Fresh, Yg Udh Connect Nomor Wa).</li>
-                        <li>Masuk Ke Get Contact, Login Ke Akun Googlenya.</li>
-                        <li>Premiumin Kek Biasa, Sama Aja Kek Alight Motion.</li>
-                        <li>Cancel Langganan.</li>
-                    </ol>
-                    <h4>Cara 2 :</h4>
-                    <ol>
-                        <li>Buka Applikasi GoPay.</li>
-                        <li>Pilih Bagian Kode Redeem atau Voucher Saya.</li>
-                        <li>Masukan Kode "NEWGETCONTACT".</li>
-                        <li>Tinggal Claim Promonya.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"✨", title:"Disney+", desc:"Layanan Streaming Film Dan Serial Dari Disney, Marvel, Pixar, Star Wars, Dan National Geographic.",
+    steps:[
+      "Durasi 1 Bulan.",
+      "Login Akun Di Disney Hotstar Di Web.",
+      "Pilih Paket 39rb Per Bulan.",
+      "Tinggal Sharing Ke Banyak Orang.",
+      "Durasi 1 Tahun.",
+      "Login Akun Disney Via Web.",
+      "Pilih Paket 199rb Per Tahun atau Sama Aja Kalian Modal 17rb Per Bulan.",
+      "Tinggal Sharing Ke Banyak Orang.",
+    ]
+  },
 
-            <!-- 13. GPT+ -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🧠</div><div class="app-title-text"><h3>GPT+</h3><span>AI Tools</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Akses Kredensial OpenAI Plus :</h4>
-                    <ol>
-                        <li>Coming Soon.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"🦉", title:"Duolingo", desc:"Aplikasi Belajar Bahasa Asing Dengan Metode Interaktif Dan Menyenangkan.",
+    steps:[
+      "Download Duolingo Di Play Store.",
+      "Lalu Buka, Disuruh Main Dulu Baru Bisa Login Tergantung Juga.",
+      "Login Menggunakan Email Fresh.",
+      "Lalu Pilih Duolingo Trial 7Hari/Sebulan, Sebulan Itu Tergantung Sama Email",
+      "Silahkan Pilih Bebas Individu/Family Plan.",
+      "Klik Laku Masukan Pembayaran Melalui E-Wallet, Masukkan Nomor Lalu masukan Kode Yang Dikirim Lewat WhatsApp.",
+      "Done Duolingo Premium.",
+      "Jika Ingin Premium Berkali kali, Hapus Duolingu Lalu Download Lagi, Ini Bisa Kamu Skip 1 Jam Dulu Biar Bisa Trial."
+    ]
+  },
 
-            <!-- 14. GPT-GO -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🚀</div><div class="app-title-text"><h3>GPT-GO</h3><span>AI Search</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Pemanfaatan Akses :</h4>
-                    <ol>
-                        <li>Coming Soon.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"💎", title:"Gemini", desc:"Asisten Kecerdasan Buatan Dari Google Untuk Membantu Berbagai Kebutuhan.",
+    steps:[
+      "Coming Soon."
+    ]
+  },
 
-            <!-- 15. Grok Ai -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🤖</div><div class="app-title-text"><h3>Grok Ai</h3><span>Advanced AI</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Aktivasi Fitur X Premium :</h4>
-                    <h4>⏰ Durasi 3 Hari</h4>
-                    <ol>
-                        <li>Download Apk Clone Rekomend Dual Space <a href="https://t.me/dualspacechannel/130" target="_blank" onclick="event.stopPropagation()" style="color: #00ff88; font-weight: bold; text-decoration: underline;">Klik Disini</a>.</li>
-                        <li>Beli Gsuite X Psc Bisa Di. <a href="https://t.me/mataramshopid_bot" target="_blank" onclick="event.stopPropagation()" style="color: #00ff88; font-weight: bold; text-decoration: underline;">Klik Disini</a>.</li>
-                        <li>Buka Dual Space Klik Tombol + Masukkan Apk Grok , Chrome, Dan Playstore.</li>
-                        <li>Login Playstore Masukkan Gsuite X Psc Lalu Kembali.</li>
-                        <li>Buka Chrome Dan Buka <a href="https://accounts.x.ai/sign-up?redirect=grok-com" target="_blank" onclick="event.stopPropagation()" style="color: #00ff88; font-weight: bold; text-decoration: underline;">Klik Disini</a>.</li>
-                        <li>Masukkan Akun Kosongan Tadi Dan Bakal Di Arahin Ke App Disitu Ada Teks “START FREE 3D ATAU UJI COBA GRATIS 3 HARI” Tinggal Klik Dan Pay Lalu Masukkan Pw Gsuite.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"📞", title:"Getcontact", desc:"Aplikasi Untuk Mengetahui Identitas Nomor Telepon Dan Memblokir Spam.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Siapkan Akun Google Yang Terkait Pembayaran Gopay atau Pulsa Berisi Rp 25.000 Melalui Applikasi Play Store.",
+        "Masuk Melalui Google.",
+        "Masukan Nomor Yang Mau Di Loginin.",
+        "Lakukan Pembayaran Premium Melalui Applikasinya (Wajib Terkait Pembayaran Berisi Saldo).",
+        "Jika Sudah Sukes, Kembali Ke PlayStore Untuk Membatalkan Premium Agar Tidak Kesedot.",
+        "Kalau Mau Berkali-Kali Bisa Masukin Nomor WhatsApp Orang Lain Lalu Bayar Lagi Yang Dari Langganan Sebelumnya Berjalan, Terus Batalin Lagi, Lakukan Lagi, Batalin Lagi.",
+        "Durasi Berjalan Satu Bulan Jika Sudah Habis Durasi Maka Lakukan Lagi Pembayaran Pertama dan Bisa Berkali-kali Lagi Seperti Sebelumnya."
+      ]
+    },
 
-            <!-- 16. HBO -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🎬</div><div class="app-title-text"><h3>HBO</h3><span>Movie Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses HBO GO :</h4>
-                    <ol>
-                        <li>Coming Soon.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🤖", title:"ChatGPT Plus", desc:"Layanan Chat Berbasis Kecerdasan Buatan Dengan Fitur Yang Lebih Lengkap.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Coming Soon."
+      ]
+    },
 
-            <!-- 17. Ibis Paint -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🖌️</div><div class="app-title-text"><h3>Ibis Paint</h3><span>Digital Art</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Unlocked Brush Pro :</h4>
-                    <ol>
-                        <li>Download Island.</li>
-                        <li>Login Menggunakan Gogle Yg Mau Di Prem In.</li>
-                        <li>Download Aplikasi Di Play Store Island Ibis Paint.</li>
-                        <li>Setelah Terdownload Tunggu Beberapa Menit Sampek Muncul Penawaran Gratis.</li>
-                        <li>Klik Uji Coba Gratis & Pay</li>
-                        <li>Done Premium.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🤖", title:"ChatGPT-GO", desc:"Layanan Chat Berbasis Kecerdasan Buatan Dengan Fitur Yang Lebih Lengkap.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Coming Soon."
+      ]
+    },
 
-            <!-- 18. IQiyi -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🍿</div><div class="app-title-text"><h3>IQiyi</h3><span>Drama Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Akses Member VIP :</h4>
-                    <ol>
-                        <li>Buka Emulator Pertama, Nyalain VPN Singapore, Login Gsuite Kosongan, Download Dan Daftar Iqiyi.</li>
-                        <li>Pergi Pe Profile, Pilih Yang Referral & Salin Link Referral Nya.</li>
-                        <li>Buka Emulator Kedua, Login Gsuite Dan Buka Chrome, Paste Link Tadi Di Chrome, Lalu Pilih Playstore.</li>
-                        <li>Nanti Otomatis Di Arahin Me Playstore Terus Download Dan Daftar Iqiyi Nya.</li>
-                        <li>Otomatis Akun Yang Di Pake Buat Referall Ini Dapet 3Day VIP Standar.</li>
-                        <li>Akun Utama Dapet 5 Hari VIP Standar.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"⚡", title:"Grok Ai", desc:"Asisten Kecerdasan Buatan Yang Dikembangkan Oleh xAI Untuk Berbagai Kebutuhan.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Coming Soon."
+      ]
+    },
 
-            <!-- 19. Melolo -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🎼</div><div class="app-title-text"><h3>Melolo</h3><span>Music Platform</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Premium Mod :</h4>
-                    <ol>
-                        <li>Instal & Buka Melolo.</li>
-                        <li>Pilih Profil Yang Ada Di Kanan Bawah.</li>
-                        <li>Pilih Masuk (Login Pakai Google, Mau Di Jual Buat Akun Google Dulu).</li>
-                        <li>Kalau Udah Klik Jadi VIP Yang Warna Ungu Itu.</li>
-                        <li>Bebas Mau Jual Yang M/B.</li>
-                        <li>Kalo Udah Pilih, Klik Berlangganan Yag Ada Dibawah.</li>
-                        <li>Pilih Payment Yang Mau Kalian Premiumkan.</li>
-                        <li>Geser Untuk Berlangganan Dan Batalin.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🎬", title:"HBO", desc:"Platform Streaming Film Dan Serial Premium Berkualitas Tinggi.",
+      steps:[
+        "Siapkan Akun Google Yang Terkait Pembayaran Gopay atau Pulsa Berisi Rp 25.000 Melalui Applikasi Play Store."
+      ]
+    },
 
-            <!-- 20. Netflix -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🎥</div><div class="app-title-text"><h3>Netflix</h3><span>Movie Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Prosedur Akses Akun Resmi :</h4>
-                    <h4>NETFLIX BILL E WALLET</h4>
-                    <ol>
-                        <li>Buka Aplikasi Netflix Dan Daftar Seperti Biasa.</li>
-                        <li>Pas Bagian Plan, Pilih Di Plan Yang Standard.</li>
-                        <li>Nah Disini Kalian Wajib Bayar Menggunakan E Wallet Kalian, Usahain Pake Nomor Yang Jarang Kalian Pake Agar Ke Gampang Kesedot.</li>
-                        <li>Lalu Bayar Aja.</li>
-                        <li>Nah Jika Akun Sudah Premium, Kalian Bisa Ke Web Netflix & Change Ke Plan Prem.</li>
-                        <li>Durasi Akan Berkurang Menjadi 21 Hari, Tapi 7 Harinya Masih Bisa Kalian Akses / Digunain Buat Nonton, Jadi Total Durasi Di 28 Hari.</li>
-                    </ol>
-                    <h4>TUTOR NETFLIX MODAL KECIL</h4>
-                        <li>Instal Aplikasi My Telkomsel, Dan Yap Harus Ada Kartunya, Kalo Ngga Ada Pinjam Aja, Aku Ada Yg Mau Bsa Chat. Btw 1 Nomor Bisa Berkali-kali Ya.</li>
-                        <li>Pilih Paket Netflix Di Telkomsel, Bebas Mau Plan Apa, Aku Saranin Yg Premium (Biar Untung Gede) Harganya Pasti Sama Kan, Nah Kita Mainin Aja Tuh Cashback Buatan Sendiri Misal Kalian Udah Dapat Pulsa 120.000 Dan Kalian Beli Dengan Rate 0,75 Itu Modalnya Bakal Sedikit Ya, Yang Awalnya Segini Jadi Segini, Kya 186.000×0,75 = 139.500 Lalu Kalian Kurangin Aja.</li>
-                        <li>Cek Harga Paket Netflix Di My Telkomsel, Pulsa Yang Baru Kalian Dapetin Langsung Payment Aja Ke Paket Teb Nanti Kalian Bakal Dapat Sms Telkomsel Berupa Link Bundling Netflix Telkomsel.</li>
-                        <li>Kalau Udah Dapat Step Ini Kalian Tinggal Rendem Aja Kya Biasanya, Dan Akun Ini Ga Bakal Ke Wiped Selama Sebulan (Aku Coba Berkali Mknya Netflix Strong Aku Awet).</li>
-                </div></div></div>
-            </div>
+    { icon:"🖌️", title:"Ibis Paint", desc:"Aplikasi Menggambar Digital Dengan Berbagai Kuas Dan Alat Profesional.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Download Island.",
+        "Login Menggunakan Google Yang Mau Dibuat Premium.",
+        "Download Applikasi Ibis Paint Di Playstore Island.",
+        "Seteleh Selesai Download, Tunggu Beberapa Menit Sampai Muncul Penawaran Gratis.",
+        "Klik Uji COba Gratis & Lakukan Pembayaran Menggunakan GoPay.",
+        "Done Premium, Kalau Mau Premium Ulang Hapus Island Di Pengaturan Lalu Klik Hapus Profil Kerja."
+      ]
+    },
 
-            <!-- 21. Picsart -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🖼️</div><div class="app-title-text"><h3>Picsart</h3><span>Photo Editor</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Gold Premium :</h4>
-                    <ol>
-                        <li>Download Island.</li>
-                        <li>Login Menggunakan Gogle Yg Mau Di Prem In.</li>
-                        <li>Download Aplikasi Di Play Store Island Picsart.</li>
-                        <li>Setelah Terdownload Tunggu Beberapa Menit Sampek Muncul Penawaran Gratis.</li>
-                        <li>Klik Uji Coba Gratis & Pay</li>
-                        <li>Done Premium.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+  { icon:"📺", title:"IQiyi", desc:"Platform Streaming Film, Drama, Anime, Dan Variety Show Asia.",
+      steps:[
+        "Buka Emulator Pertama, Nyalakan VPN Singapore.",
+        "Login Google Suite Kosong, Lalu Download dan Daftar Iqiyi.",
+        "Salin Link Referralnya.",
+        "Buka Emulator Kedua, Login Google Suite dan Buka Chrome, Paste Link Refferalnya Di Chrome dan Pilih Playstore.",
+        "Nanti Otomatis Di Arahin Ke Playstore Terus Download dan Daftar IQIYI.",
+        "Otomatis Akun Yang Dipake Buat Refferal Ini Dapet 3Day VIP Standar.",
+        "Akun Utama Dapet 5 Hari VIP Standar.",
+        "Kalau Tidak Bisa Beli Di APK Langsung, Pengguna Baru Biasanya Dapet Di Harga 15rb.",
+      ]
+    },
 
-            <!-- 22. Remini -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">📸</div><div class="app-title-text"><h3>Remini</h3><span>Photo Enhancer</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Pro Unlocked :</h4>
-                    <ol>
-                        <li>Download Island.</li>
-                        <li>Login Menggunakan Gogle Yg Mau Di Prem In.</li>
-                        <li>Download Aplikasi Di Play Store Island Remini.</li>
-                        <li>Setelah Terdownload Tunggu Beberapa Menit Sampek Muncul Penawaran Gratis.</li>
-                        <li>Klik Uji Coba Gratis & Pay</li>
-                        <li>Done Premium.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🌸", title:"Melolo", desc:"Aplikasi Hiburan Yang Menyediakan Berbagai Konten Digital Menarik.",
+      steps:[
+        "Instal Melolo & Buka Appplikasinya.",
+        "Pilih Profile Yang Ada Di Kanan Bawah.",
+        "Pilih Masuk (Login Pakai Google, Mau Dijual Buat Akun Google Dulu).",
+        "Kalau Udah Klik Jadi VIP Yang Berwarna Ungu.",
+        "Bebas Mau Jual Yang Mana.",
+        "Kalau Sudah Pilih, Klik Berlangganan.",
+        "Pilih Payment Yang Mau Kalian Gunakan Untuk Premium.",
+        "Done & Batalin Langganan."
+      ]
+    },
 
-            <!-- 23. Spotify -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">💚</div><div class="app-title-text"><h3>Spotify</h3><span>Music Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Pemasangan Mod Premium :</h4>
-                    <h4>⏰ Durasi 1 Bulan</h4>
-                    <ol>
-                        <li>Buka Vpn, Lalu Connect Ke France.</li>
-                        <li>Lalu Buka Brave Browser.</li>
-                        <li>Kemudian Ketik <b>spotify.com/fr/signup</b>.</li>
-                        <li>Lalu Signup Pake Gmail Kosongan.</li>
-                        <li>Ubah Gmail Tadi Menjadi Temp Mail.</li>
-                        <li>Emailnya Bisa Kalian Sesuaikan Aja.</li>
-                        <li>Kemudian Checklist Semua.</li>
-                        <li>Pencet "signup" Yang Ada Di Tengah.</li>
-                        <li>Kemudian Pencet Profil Di Atas, Ga Ngerti Bahasanya? Translate Aja.</li>
-                        <li>Scroll Kebawah.</li>
-                        <li>Pilih <b>"choose A Password"</b>.</li>
-                        <li>Masukin Password Yg Mau Dibikin.</li>
-                        <li>Scroll Lagi Kebawah, Terus Pencet <b>"change Connection Methods"</b>.</li>
-                        <li>Kemudian Pencet Google, Lalu Pencet"delete", Terus Pencet Lagi "yes, Delete.</li>
-                    </ol>
-                    <h4>⏰ Durasi 3 Bulan</h4>
-                    <ol>
-                        <li>Wajib Menggunakan Vpn Us.</li>
-                        <li>Jika Sudah Login Di Situs Ini <a href="https://hm.info/6186fTUz8" target="_blank" onclick="event.stopPropagation()" style="color: #00ff88; font-weight: bold; text-decoration: underline;">Klik Disini</a>..</li>
-                        <li>Wajib Buat Akun Baru Jika Belum Pernah Daftar Disini.</li>
-                        <li>Setelah Selesai Buat Akun, Klik Profile/Saya.</li>
-                        <li>Scrol Kebawah Sampai Menemukan Free Spotify 3 Bulan.</li>
-                        <li>Setelah Menemukan Free Trial Spotify 3 Bulan, Kalian Klik.</li>
-                        <li>Setelah Kalian Klik Jangan Lupa Klik Yang Ada Tulisan' Redeem Offer' Atau Rendem Voucher.</li>
-                        <li>Setelah Kalian Klik, Bakal Ke Copy Sendiri Code Voucher.</li>
-                        <li>Kalian Bakal Kebawa Otomatis Ya Jadi Kalian Gausah Tempel Codenya.</li>
-                        <li>Setelah Itu Klik Yang Ada Tulisan' Start Free Trial.</li>
-                        <li>Setelah Kalian Klik, Kalian Bakal Otomatis Ke Website Spotify Buat Login, Pastikan Kamu Sudah Buat Akun Spotify Kalo Belum Bisa Buat.</li>
-                        <li>Masukan Email, Biasanya Bakal Ada Kode, Tapi Kalau Mau Fast Bisa Klik Login Menggunakan Passoword Ya.</li>
-                        <li>Jika Sudah Klik 'Log In' Sekarang Kamu Bisa Payment Menggunakan Credit Atau Paypal</li>
-                        <li>Pastikan Debit/Credit/Lainnya Tidak Bersangkut Dengan Rekening Pribadi, Bisa Pakai Pribadi Jika Jarang Di Isi Saldo</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🎥", title:"Netflix Crack", desc:"Platform Streaming Film, Serial, Dokumenter, Dan Acara Original Dari Berbagai Negara.",
+      steps:[
+        "Unduh Kantflix Di PlayStore.",
+        "Daftar Akun Kantflix, Masukan Kode Refferal (GCXVET4M).",
+        "Masuk, Akun Berhasil VIP.",
+        "Klik Bagian , Lalu Generate Link.",
+        "Batas Generate Link 1000/Hari Jika VIP, Jika Free 10x/Hari.",
+        "Bisa Salin & Kirim Ke Converter Bot Jika Mau Login Via PC atau Kode TV.",
+        "Link Converter Bot <a href=\"https://t.me/cookiestourl_bot\" target=\"_blank\" rel=\"noopener\">Cookies Converter</a>.",
+      ]
+    },
 
-            <!-- 24. Telegram -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">✈️</div><div class="app-title-text"><h3>Telegram</h3><span>Messenger</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Klaim Fitur Premium :</h4>
-                    <ol>
-                        <li>Coming Soon.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🖼️", title:"PicsArt", desc:"Aplikasi Edit Foto Dan Desain Grafis Dengan Banyak Fitur Kreatif.",
+      steps:[
+        "Download Island.",
+        "Login Menggunakan Google Yang Mau Dibuat Premium.",
+        "Download Applikasi PicsArt Di Playstore Island.",
+        "Seteleh Selesai Download, Tunggu Beberapa Menit Sampai Muncul Penawaran Gratis.",
+        "Klik Uji COba Gratis & Lakukan Pembayaran Menggunakan GoPay.",
+        "Done Premium, Kalau Mau Premium Ulang Hapus Island Di Pengaturan Lalu Klik Hapus Profil Kerja."
+      ]
+    },
 
-            <!-- 25. Vision+ -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">💎</div><div class="app-title-text"><h3>Vision+</h3><span>TV Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Login Premium:</h4>
-                    <ol>
-                        <li>Coming Soon.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🤖", title:"PollyBuzz", desc:"Aplikasi Chat AI Yang Memungkinkan Pengguna Berinteraksi Dengan Berbagai Karakter Virtual Secara Interaktif.",
+    steps:[
+      "Download PolyBuzz Di Play Store.",
+      "Login Menggunakan Akun Fresh.",
+      "Pilih Plan Premium. Kalau Sudah Diklik, Tekan Uji Coba 3 Hari.",
+      "Add Payment Yang Kalian Mau Pakai.",
+      "Berlangganan, Done Premium."
+    ]
+  },
 
-            <!-- 26. Vidio Mobile -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">⚽</div><div class="app-title-text"><h3>Vidio Mobile</h3><span>Live Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Paket Premier :</h4>
-                    <ol>
-                        <li>Login vidio mobile di chrome pakai nomor HP Axis kamu..</li>
-                        <li>Setting password dan tambahkan email.</li>
-                        <li>Lalu buka Axis Net (beli paket Vidio), otomatis akun yang kalian daftar langsung premium.</li>
-                        <li>Terakhir bayar paket Vidio menggunakan Gopay/Dana (jangan pakai pulsa)</li>
-                        <li>Modal 12.5k biasanya harga pasaran Vidio mobile 1 bulan privasi 20k ke atas.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"📷", title:"Remini", desc:"Aplikasi Untuk Meningkatkan Kualitas Foto Dan Video Menggunakan AI.",
+      steps:[
+        "Download Island.",
+        "Login Menggunakan Google Yang Mau Dibuat Premium.",
+        "Download Applikasi Remini Di Playstore Island.",
+        "Seteleh Selesai Download, Tunggu Beberapa Menit Sampai Muncul Penawaran Gratis.",
+        "Klik Uji COba Gratis & Lakukan Pembayaran Menggunakan GoPay.",
+        "Done Premium, Kalau Mau Premium Ulang Hapus Island Di Pengaturan Lalu Klik Hapus Profil Kerja."
+      ]
+    },
 
-            <!-- 27. Viki -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🌟</div><div class="app-title-text"><h3>Viki</h3><span>Asian Drama</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Viki Pass :</h4>
-                    <ol>
-                        <li>COMING SOON.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🎧", title:"Spotify", desc:"Layanan Streaming Musik, Podcast, Dan Audio Digital Terpopuler.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Siapkan Bahan & Alat Seperti Brave Browser, Express VPN/vpn.lat, Temp Mail.",
+        "Brave Browser <a href=\"https://play.google.com/store/apps/details?id=com.brave.browser\" target=\"_blank\" rel=\"noopener\">Brave Browser</a>.",
+        "Express VPN <a href=\"https://play.google.com/store/apps/details?id=com.expressvpn.vpn\" target=\"_blank\" rel=\"noopener\">Express VPN</a>.",
+        "vpn.lat <a href=\"https://play.google.com/store/apps/details?id=com.vpn.lat\" target=\"_blank\" rel=\"noopener\">vpn.lat</a>.",
+        "Temp Mail <a href=\"https://mataramshop.my.id\" target=\"_blank\" rel=\"noopener\">Temp Mail</a>.",
+        "Buka VPN, Lalu Connect Ke Region France.",
+        "Buka Brave Browser & Ketik spotify.com/fr/signup.",
+        "Signup Menggunakan Gmail Kosongan.",
+        "Ubah Gmail Tadi Menjadi Temp Mail.",
+        "Emailnya Bisa Kalian Sesuaikan & Checklist Semua.",
+        "Klik SignUp Yang Ada Ditengah, Lalu Klik Profil.",
+        "Ubah Bahasanya/Translate Agar Kalian Mengerti.",
+        "Scroll, Lalu Klik Choose a Password.",
+        "Masukan Password Yang Mau Dibikin.",
+        "Setelah Itu Klik Gambar Profile & Scroll Lagi.",
+        "Klik Change Connection Methods.",
+        "Kemudian Klik Google, Lalu Klik Delete & Klik Lagi Yes Delate.",
+      ]
+    },
 
-            <!-- 28. Viu -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">💜</div><div class="app-title-text"><h3>Viu</h3><span>Drama Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Aktivasi Member Premium :</h4>
-                    <ol>
-                        <li>COMING SOON.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"✈️", title:"Telegram", desc:"Aplikasi Pesan Instan Dengan Fitur Grup, Channel, Dan Bot Yang Lengkap.",
+      steps:[
+        "Coming Soon."
+      ]
+    },
 
-            <!-- 29. VPN Master -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🔑</div><div class="app-title-text"><h3>VPN Master</h3><span>Security Tool</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan VIP Unlocked :</h4>
-                    <ol>
-                        <li>COMING SOON.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"📡", title:"Vision+", desc:"Platform Streaming TV, Film, Dan Olahraga Secara Online.",
+      steps:[
+        "Coming Soon."
+      ]
+    },
 
-            <!-- 30. VPN Turbo -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🐇</div><div class="app-title-text"><h3>VPN Turbo</h3><span>Proxy Network</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Server Premium :</h4>
-                    <ol>
-                        <li>COMING SOON.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"🎬", title:"Vivacut", desc:"Aplikasi Edit Video Profesional Dengan Fitur Multi-Layer, Chroma Key, Dan Berbagai Efek Kreatif.",
+    steps:[
+      "Download VivaCut Di Play Store.",
+      "Login Menggunakan Email Fresh.",
+      "Ke Bagian Edit, Klik Pojok Atas, Lalu Tekan Uji Coba Gratis."
+    ]
+  },
 
-            <!-- 31. WA Plus -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">💬</div><div class="app-title-text"><h3>WA Plus</h3><span>Messenger Mod</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Langkah Pemasangan Sistem Aman:</h4>
-                    <ol>
-                        <li>Update WhatsApp.</li>
-                        <li>Pilih Langganan.</li>
-                        <li>Uji Coba 1 Bulan Langganan.</li>
-                        <li>Done Premium (gunakan gopay/dana tumbal).</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"📹", title:"Vidio", desc:"Aplikasi Streaming TV Lokal, Film, Dan Siaran Olahraga Langsung.",
+      steps:[
+        "Coming Soon."
+      ]
+    },
 
-            <!-- 32. Wattpad -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">📖</div><div class="app-title-text"><h3>Wattpad</h3><span>Reading Platform</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Premium Unlocked :</h4>
-                    <ol>
-                        <li>Download aplikasi tersebut, Setelah itu, buka aplikasi tersebut.</li>
-                        <li>Pilih Login Pakai Gmail Yang Kalian Mau Premiumkan.</li>
-                        <li>Isi Data Dan Klik Lanjut.</li>
-                        <li>Ikutin Aja Arahannya & Pilih Uji Coba 7 Hari.</li>
-                        <li>Bayar Pakai Dana/Gopay Tumbal.</li>
-                        <li>Done Dan Batalkan Langganan Di Play Store.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"▶️", title:"Viu", desc:"Aplikasi Streaming Drama Korea, Jepang, Thailand, Dan Asia Lainnya.",
+      steps:[
+        "Coming Soon."
+      ]
+    },
 
-            <!-- 33. WeTV -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🍿</div><div class="app-title-text"><h3>WeTV</h3><span>Drama Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Akses Akun VIP Resmi :</h4>
-                    <ol>
-                        <li>Buka Apk My Telkomsel.</li>
-                        <li>Klik Digital Lifestyle.</li>
-                        <li>Klik WeTV.</li>
-                        <li>Geser Paketnya Ke Kanan Lalu Klik Lihat Semua & Geser Kebawah Klik 35K.</li>
-                        <li>Bisa Bayar Pake QRIS.</li>
-                        <li>Jika Sudah Bayar Cek SMS Di Apk Pesan Lalu Login Apk Vidio WeTV Dan Viu Pake Nomor HP Mu Done.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"💬", title:"WhatsApp Plus", desc:"Modifikasi WhatsApp Dengan Fitur Tambahan Yang Tidak Tersedia Pada Versi Resmi.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Wajib Update WhatsApp Terbaru.",
+        "Pilih Menu Langganan.",
+        "Uji Coba 1 Bulan Klik.",
+        "Payment Menggunakan E-Wallet."
+      ]
+    },
 
-            <!-- 34. Wibuku -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">⛩️</div><div class="app-title-text"><h3>Wibuku</h3><span>Comic & Manga</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Premium :</h4>
-                    <ol>
-                        <li>Kalau Wibuku Biasanya Beli Di Apk Langsung Harga 12k Langganan.</li>
-                        <li>Batalin Ke Play Store.</li>
-                        <li>Jangan Di Jual Share.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"📖", title:"Wattpad", desc:"Platform Untuk Membaca Dan Menulis Novel Serta Cerita Digital.",
+      steps:[
+        "Buka Applikasi & Login Pake Gmail Yang Kalian Inginkan.",
+        "Isi Data & Ikutin Sesuai Arahan.",
+        "Klik Uji Coba 7 hari.",
+        "Bayar Menggunakan E-Wallet (Disarankan Menggunakan Nomor Tumbal).",
+        "Jangan Lupa Batalkan Langganan Play Store.",
+      ]
+    },
 
-            <!-- 35. Wink -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🎬</div><div class="app-title-text"><h3>Wink</h3><span>Video Retouching</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan VIP Retouch :</h4>
-                    <ol>
-                        <li>Download Island.</li>
-                        <li>Login Menggunakan Gogle Yg Mau Di Prem In.</li>
-                        <li>Download Aplikasi Di Play Store Island Picsart.</li>
-                        <li>Setelah Terdownload Tunggu Beberapa Menit Sampek Muncul Penawaran Gratis.</li>
-                        <li>Klik Uji Coba Gratis & Pay</li>
-                        <li>Done Premium.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"📺", title:"WeTV", desc:"Layanan Streaming Drama Asia, Film, Dan Anime Berkualitas HD.",
+      steps:[
+        "Buka Applikasi, Lalu Klik Bagian Akun.",
+        "Klik Opsi Masuk & Login Menggunakan Temp Email.",
+        "Isi Email & Password Yang Ingin Digunakan.",
+        "Setelah Itu Buka Link <a href=\"https://hkm.film.wetv.vip/magic-act/zc0tk1w110zi5qjeyhe4tcul2g/index_e1c57.html?ovscroll=0&page=e1c57&ptag=duolingo_en\" target=\"_blank\" rel=\"noopener\">wetv x duolingo</a>.",
+        "Claim Trial 15 Hari & Nikmati VIP.",
+      ]
+    },
 
-            <!-- 36. Youku -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">🎥</div><div class="app-title-text"><h3>Youku</h3><span>Drama Streaming</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses VIP :</h4>
-                    <ol>
-                        <li>Ke Apk Langsung.</li>
-                        <li>Pake Email Baru (Biar Dapat Diskon).</li>
-                        <li>Klik Beli.</li>
-                        <li>Bebas Pake Payment Apa Yang Penting Ada Saldo Nya 16k</li>
-                        <li>Done, Batalkan Langganan.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"✨", title:"Wink", desc:"Aplikasi Edit Foto Dan Video Dengan Fitur AI Untuk Meningkatkan Kualitas Visual.",
+      steps:[
+        "Download Apk Island.",
+        "Buka Apk Island Sampai Muncul Menu.",
+        "Pencet Play Store Terus Pencet Tombol Kotak Di Pojok Kanan.",
+        "Login Pakai Email Yang Mau Di-Premium-in (Pastikan Email-Nya Baru Dibuat Dan Fresh).",
+        "Kalau Sudah Login, Download Apk Wink.",
+        "Kalau Sudah Ke Download, Jangan Langsung Dibuka, Keluar Dulu Dari Play Store Ke Beranda.",
+        "Pencet Wink Lama (Yang Ada Tanda Keranjangnya).",
+        "Pencet Info Apk, Pencet Izin, Aktifkan Notifikasi.",
+        "Kalau Sudah, Bisa Buka Wink-Nya (Yang Ada Tanda Keranjangnya).",
+        "Tunggu Nanti Ada Notif/Tampilan 'Uji Coba 7H', Habis Itu Pencet Uji Coba 7H.",
+        "Sebelum Bayar, Usahakan Pakai Apk/Nomor Payment Yang Tidak Akan Diisi Saldo (Biar Tidak Ketarik Uangnya).",
+        "Setelah Bayar, Tunggu Sebentar Sampai Ada Notif Sudah Premium.",
+        "Geser Ke Kanan, Pencet Masuk, Masuk Pakai Akun Yang Mau Di-Premium-in.",
+        "Akun Sudah Premium.",
+        "Mau Premium-in Akun Lain? Buka Play Store.",
+        "Kelola Akun Perangkat, Scroll Ke Bawah, Hapus Profil Kerja.",
+        "Kalau Sudah Dihapus, Kamu Bisa Lanjut Premium Akun Lain, Tutorial Sama Seperti Tadi."
+      ]
+    },
 
-            <!-- 37. YouTube -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">❤️</div><div class="app-title-text"><h3>YouTube</h3><span>Video Platform</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Aktivasi Premium (Family/Individu) :</h4>
-                    <ol>
-                        <li>Setup Pertama Butuh 10k Buat Pancingan Di Gopay Ya Jangan E-Wallet Lain Nanti 10k Nya Balik Sendiri.</li>
-                        <li>Buka YiTube Di Applikasi atau Chrome.</li>
-                        <li>Login Menggunakan Google.</li>
-                        <li>Pilih Coba Gratis/Manfaat Premium Di Bawah Profil.</li>
-                        <li>Pencet Aja Nanti Ada Pilihan FAMHEAD Dan Individu Pilih Mau Yang Mana Klik Aja Paketnya</li>
-                        <li>Suruh Masukin E-Wallet Pencet Yang Gopay Nanti Masukin Nomer Aja Sama Kode Masuk Di WA.</li>
-                        <li>Done YT Prem 1b Otomatis YT Music Ikut Prem, Dan Saldo Gopay Balik Lagi.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+    { icon:"▶️", title:"YouTube", desc:"Platform Berbagi Dan Menonton Video Dengan Berbagai Jenis Konten.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Dibutuhkan Email Fresh.",
+        "Open 'Anda' Di Pojok Kanan Bawah.",
+        "Klik Dapatkan YouTube Premium.",
+        "Klik Dapatkan Premium 1 Bulan Rp 0,-.",
+        "Klik Perorangan/Keluarga.",
+        "Klik Dan Pay Melalui E-Wallet.",
+        "Setelah Itu Ikuti Arahan YouTube.",
+        "Jika Eror, Berarti Device Memerlukan VCC.",
+        "iPhone Bisa Pay Menggunakan E-Wallet.",
+        "Jika Eror Di Android Bisa Pindah Ke Laptop.",
+        "Pakai E-Wallet Kosongan Yang Sedikit Saldo-Nya Agar Aman.",
+        "Setelah Habis 1 Bulan, Silakan Hapus Tautan E-Wallet Di YouTube Agar Bisa Di-Hit Berkali Kali."
 
-            <!-- 38. Zoom -->
-            <div class="apk-card" onclick="handleCardClick(this)">
-                <div class="card-main-info">
-                    <div class="app-meta"><div class="app-icon-box">💻</div><div class="app-title-text"><h3>Zoom</h3><span>Video Conference</span></div></div>
-                    <div class="action-arrow">➔</div>
-                </div>
-                <div class="tutorial-container"><div class="tutorial-body"><div class="tutorial-inner-content">
-                    <h4>⚙️ Panduan Akses Zoom Pro :</h4>
-                    <ol>
-                        <li>Download Aplikasi Zoom Di Play Store.</li>
-                        <li>Login Menggunakan Email Gogle Atau Email Generator.</li>
-                        <li>Klik Uji Coba Selama 7h Atau 14h.</li>
-                        <li>Payment Menggunakan E-Wallet Kamu.</li>
-                        <li>Done Zoom Prem Bisa Premin Berkali Kali Asal Copot Dulu.</li>
-                    </ol>
-                </div></div></div>
-            </div>
+      ]
+    },
 
-        </div>
-    </div>
+    { icon:"🎥", title:"Zoom", desc:"Aplikasi Meeting Online Untuk Video Conference, Webinar, Dan Kolaborasi Tim.",
+      video:"https://www.youtube.com/@MataramShop",
+      steps:[
+        "Download Applikasi ZOom Di PlayStore.",
+        "Login Menggunakan Gmail/Temp Email.",
+        "Klik Uji Coba Selama 7 Hari/14 Hari.",
+        "Payment Menggunakan E-Wallet.",
+        "Batalkan Langganan Agar Bisa Digunakan Berkali-Kali."
+      ]
+    },
+  ];
 
-    <footer>
-        <p>Sistem Enkripsi Informasi Terintegrasi &copy; 2026 Mataram Shop.</p>
-        
-        <!-- BAGIAN BARU: 5 Tombol Akses Keluar Sesuai Request -->
-        <div class="footer-action-buttons">
-            <a href="https://linktr.ee/mataramshop" target="_blank" class="link-web">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                Website
-            </a>
-            <a href="https://www.instagram.com/mataram.shop.id" target="_blank" class="link-instagram">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                Instagram
-            </a>
-            <a href="https://wa.me/628212966610" target="_blank" class="link-whatsapp">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                WhatsApp
-            </a>
-            <a href="https://t.me/mataramshopid_bot" target="_blank" class="link-telegram">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                Telegram
-            </a>
-            <a href="https://www.tiktok.com/@mataramshop_id" target="_blank" class="link-tiktok">
-                <!-- SVG Icon Tik Tok Sederhana -->
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
-                TikTok
-            </a>
-        </div>
-    </footer>
+const grid = document.getElementById("grid");
+const searchInput = document.getElementById("searchInput");
+const resultCount = document.getElementById("resultCount");
+const emptyState = document.getElementById("emptyState");
 
-    <script>
-        function toggleScreenMode() {
-            const currentBody = document.body;
-            const currentBtn = document.getElementById('modeButton');
-            currentBody.classList.toggle('dark-mode');
-            
-            if (currentBody.classList.contains('dark-mode')) {
-                currentBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg> <span>Mode Terang</span>`;
-            } else {
-                currentBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg> <span>Mode Gelap</span>`;
-            }
-        }
+function renderGrid(){
+  const query = searchInput.value.trim().toLowerCase();
+  const filtered = tutorials.filter(t => {
+    return t.title.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query);
+  });
 
-        function handleCardClick(clickedCard) {
-            if (clickedCard.classList.contains('active')) {
-                clickedCard.classList.remove('active');
-            } else {
-                const globalActiveCard = document.querySelector('.apk-card.active');
-                if (globalActiveCard) {
-                    globalActiveCard.classList.remove('active');
-                }
-                clickedCard.classList.add('active');
-            }
-        }
+  grid.innerHTML = "";
+  filtered.forEach((t, i) => {
+    const hasVideo = Boolean(t.video);
+    const hasSteps = Array.isArray(t.steps) && t.steps.length > 0;
 
-        function filterPremiumApps() {
-            const userSearchValue = document.getElementById('appSearchInput').value.toLowerCase();
-            const collectionOfCards = document.querySelectorAll('.apk-card');
-            
-            collectionOfCards.forEach(targetCard => {
-                const targetAppName = targetCard.querySelector('.app-title-text h3').innerText.toLowerCase();
-                if (targetAppName.includes(userSearchValue)) {
-                    targetCard.style.display = "block";
-                } else {
-                    targetCard.style.display = "none";
-                }
-            });
-        }
-    </script>
+    let badgeHtml = "";
+    if (hasVideo && hasSteps){
+      badgeHtml = `<span class="card-badge is-both">🎥📄 Video + Teks</span>`;
+    } else if (hasVideo){
+      badgeHtml = `<span class="card-badge is-video">🎥 Video</span>`;
+    } else if (hasSteps){
+      badgeHtml = `<span class="card-badge is-text">📄 Teks</span>`;
+    }
+
+    let actionsHtml = "";
+    if (hasVideo){
+      actionsHtml += `<a class="card-watch" href="${t.video}" target="_blank" rel="noopener">Tonton Video</a>`;
+    }
+    if (hasSteps){
+      actionsHtml += `<button type="button" class="card-toggle" aria-expanded="false" data-index="${i}">Baca Tutorial</button>`;
+    }
+
+    const stepsHtml = hasSteps
+      ? `<ol class="card-steps" id="steps-${i}">${t.steps.map(s => `<li>${s}</li>`).join("")}</ol>`
+      : "";
+
+    const card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="card-icon">${t.icon}</div>
+        ${badgeHtml}
+      </div>
+      <h3 class="card-title">${t.title}</h3>
+      <p class="card-desc">${t.desc}</p>
+      ${actionsHtml ? `<div class="card-actions">${actionsHtml}</div>` : ""}
+      ${stepsHtml}
+    `;
+    grid.appendChild(card);
+
+    if (hasSteps){
+      const toggleBtn = card.querySelector(".card-toggle");
+      const stepsPanel = card.querySelector(`#steps-${i}`);
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = stepsPanel.classList.toggle("open");
+        toggleBtn.setAttribute("aria-expanded", String(isOpen));
+        toggleBtn.textContent = isOpen ? "Sembunyikan Tutorial" : "Baca Tutorial";
+      });
+    }
+  });
+
+  resultCount.textContent = `${filtered.length} tutorial ditemukan`;
+  emptyState.style.display = filtered.length === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener("input", renderGrid);
+
+renderGrid();
+</script>
+
 </body>
 </html>
